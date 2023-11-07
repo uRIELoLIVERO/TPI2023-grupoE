@@ -1,0 +1,49 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+html{
+    font-size: 67.25%;
+}
+
+body{
+    background-color: var(--antiFlashWhite);
+}
+
+:root {
+    --hunyadiYellow: #EDAE49;
+    --onyx: #313638;
+    --Alabaster: #E0DFD5;
+    --antiFlashWhite: #E8E9EB ;
+    --sandyBrown: #F19953;
+    --cafeNoir: #56351E;
+    --asparagus: #6A9F56;
+    --celadon: #ACD8AA;
+    --vermilion: #E93835;
+    --blush: #E0677F;
+    --lapisLazulli: #2660A4;
+    --sm: .8em;
+    --md: 1.2em;
+    --lg: 1.6em;
+}
+
+.tituloCantina{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+}
+
+.tituloCantina:nth-child(2){
+    color: var(--hunyadiYellow);
+}
+
+.imagenUsuario{
+    width: 70px;
+}
+
+.inputLogin{
+    background-color: var(--Alabaster);
+}
+
+.botonIngresar{
+    background-color: var(--lapisLazulli);
+    border-radius: 8px;
+}
