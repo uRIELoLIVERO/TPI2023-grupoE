@@ -6,6 +6,7 @@ class Area(models.Model):
     ubicacion = models.CharField(max_length=100)
 
 class Cliente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE) 
     nombreYApellido = models.CharField(max_length=100)
     usuario = models.CharField(max_length=100)
     contrasenia = models.CharField(max_length=100)
