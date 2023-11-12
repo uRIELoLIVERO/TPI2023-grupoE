@@ -52,6 +52,14 @@ main{
     width: 100%;
 }
 
+.form-control:focus {
+    border-color: none;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+    background-color: var(--Alabaster);
+}
+
 .fondoGris{
     background-color: rgba(232, 233, 235, 0.90);
     -moz-border-radius: 7px;
