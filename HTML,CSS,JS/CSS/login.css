@@ -7,7 +7,7 @@ html, body{
 }
 
 body{
-    background-image: url(../images/imagen_utn.png);
+    background-image: url("../images/imagen_utn.png");
     width: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
