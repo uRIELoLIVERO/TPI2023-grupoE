@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ClienteForm
 from .forms import UserCreationFormExtended
+from .models import *
+from django.views import View
 
 def mysite(request):
     # Lógica de negocio aquí
@@ -23,3 +25,17 @@ def login_view(request):
         form = AuthenticationForm()
 
     return render(request, 'login.html', {'form': form})
+
+
+
+def lista_productos(request):
+    # Filtrar los productos con estado=True
+    productos_disponibles = Producto.objects.filter(estado=True)
+
+    # Pasar la información al template
+    context = {
+        'productos_disponibles': productos_disponibles,
+    }
+
+    # Renderizar el template con la información
+    return render(request, 'lista_productos.html', context)
