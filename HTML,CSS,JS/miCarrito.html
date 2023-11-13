@@ -11,62 +11,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="d-flex align-items-start mt-5">
-    <div class="container d-flex align-items-center">
-        <main class="m-auto">
-            <div class="container p-0">
-                <div class="row align-items-center">
-                    <div class="col d-inline-flex">
-                        <span class="me-2 align-middle d-flex align-items-center"><img class="" src="./images/return 1.svg" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal">Mi carrito</p>
+<body>
+    <div class="container-miCarrito d-flex align-items-start">
+        <div class="container d-flex align-items-center">
+            <main class="m-auto container-carrito">
+                <div class="container p-0">
+                    <div class="row align-items-center">
+                        <div class="col d-inline-flex">
+                            <span class="me-2 align-middle d-flex align-items-center"><img class="" src="./images/return 1.svg" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal">Mi carrito</p>
+                        </div>
+                        <div class="col text-end">
+                            <p class="h5 m-0 titulos-principal">X items</p>
+                        </div>
                     </div>
-                    <div class="col text-end">
-                        <p class="h5 m-0 titulos-principal">X items</p>
-                    </div>
+                    <hr class="border-black m-1 mb-3">
                 </div>
-                <hr class="border-black m-1 mb-3">
-            </div>
-            <div class="card">
-                <div class="row fila-objeto">
-                    <div class="ps-3 pe-0 col-3 columna-imagen align-self-center">
-                        <img class="img-fluid mx-auto d-block" src="./images/alfajor.png" alt="">
-                    </div>
-                    <div class="col-9 mt-2 mb-2 columna-detalles align-self-center">
-                        <div class="row align-items-center fila-detalles">
-                            <div class="col columna-nombre">
-                                <p class="m-0 fontSize-card text-center">Alfajor TERRABUSI</p>
-                            </div>
-                            <div class="col columna-cantidad d-flex align-items-center justify-content-center">
-                                <div class="container-cantidad d-flex justify-content-center ">
-                                    <img src="./images/square-minus-regular.svg" alt="" width="18">
-                                    <p class="ms-2 me-2 text-center cantidad rounded-1 p-0 m-auto">2</p>
-                                    <img src="./images/square-plus-solid.svg" alt="" width="18">
+                <div class="card">
+                    <div class="row fila-objeto">
+                        <div class="ps-3 pe-0 col-3 columna-imagen align-self-center">
+                            <img class="img-fluid mx-auto d-block" src="./images/alfajor.png" alt="">
+                        </div>
+                        <div class="col-9 mt-2 mb-2 columna-detalles align-self-center">
+                            <div class="row align-items-center fila-detalles">
+                                <div class="col columna-nombre">
+                                    <p class="m-0 fontSize-card text-center">Alfajor TERRABUSI</p>
                                 </div>
-                            </div>
-                            <div class="col columna-botonEliminar d-flex justify-content-center">
-                                <button class="btn border border-black btn-danger boton-eliminar text-dark pt-0 pb-0 d-flex align-items-center"><span class="me-1 imagen-trash"><img src="./images/trash-can-solid.svg" alt="" width="10px"></span><p class="m-0 p-0">Eliminar</p></button>
-                            </div>
-                            <div class="col columna-precioUnitario">
-                                <p class="m-0 p-0 fontSize-card precio text-center">$256,33</p>
+                                <div class="col columna-cantidad d-flex align-items-center justify-content-center">
+                                    <div class="container-cantidad d-flex justify-content-center ">
+                                        <img src="./images/square-minus-regular.svg" alt="" width="18">
+                                        <p class="ms-2 me-2 text-center cantidad rounded-1 p-0 m-auto">2</p>
+                                        <img src="./images/square-plus-solid.svg" alt="" width="18">
+                                    </div>
+                                </div>
+                                <div class="col columna-botonEliminar d-flex justify-content-center">
+                                    <button class="btn border border-black btn-danger boton-eliminar text-dark pt-0 pb-0 d-flex align-items-center"><span class="me-1 imagen-trash"><img src="./images/trash-can-solid.svg" alt="" width="10px"></span><p class="m-0 p-0">Eliminar</p></button>
+                                </div>
+                                <div class="col columna-precioUnitario">
+                                    <p class="m-0 p-0 fontSize-card precio text-center">$256,33</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="invisible">
-            <div class="container-totalMasIrAPagar">
-                <div class="total-a-pagar mt-4 row d-flex align-items-center m-0 rounded-4">
-                    <div class="col">
-                        <p class="mb-0">Total</p>
+                <hr class="invisible">
+                <div class="container-totalMasIrAPagar">
+                    <div class="total-a-pagar mt-4 row d-flex align-items-center m-0 rounded-4">
+                        <div class="col">
+                            <p class="mb-0">Total</p>
+                        </div>
+                        <div class="col text-end">
+                            <p class="mb-0 precio-total">$512,66</p>
+                        </div>
                     </div>
-                    <div class="col text-end">
-                        <p class="mb-0 precio-total">$512,66</p>
+                    <div class="d-grid mx-auto mt-3 container-irAPagar">
+                        <button type="submit" class="btn btn-primary border-dark text-light rounded-4 pt-1 pb-1 bg-button">Ir a pagar</button>
                     </div>
                 </div>
-                <div class="d-grid mx-auto mt-3 container-irAPagar">
-                    <button type="submit" class="btn btn-primary border-dark text-light rounded-4 pt-1 pb-1 bg-button">Ir a pagar</button>
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 </body>
 </html>
