@@ -19,12 +19,12 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html, body{
-    height: 100%;
+.container-miCarrito{
+    height: 100vh;
     background-color: var(--antiFlashWhite);
 }
 
-main{
+.container-carrito{
     height: 300px;
 }
 
@@ -85,10 +85,11 @@ hr{
 }
 
 @media (min-width: 1000px){
-    html, body{
+    .container-miCarrito{
         background-color: #CCCCCC;
     }
-    main{
+
+    .container-carrito{
         width: 75%;
         padding: 40px;
         background-color: var(--antiFlashWhite);

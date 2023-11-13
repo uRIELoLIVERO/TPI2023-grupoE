@@ -1,0 +1,423 @@
+:root{
+    --hunyadiYellow: #EDAE49;
+    --onyx: #313638;
+    --Alabaster: #E0DFD5;
+    --antiFlashWhite: #E8E9EB ;
+    --sandyBrown: #F19953;
+    --cafeNoir: #56351E;
+    --asparagus: #6A9F56;
+    --celadon: #ACD8AA;
+    --vermilion: #E93835;
+    --blush: #E0677F;
+    --lapisLazulli: #2660A4;
+    --sm: .8em;
+    --md: 1.2em;
+    --lg: 1.6em;
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Comienzo CSS login */
+
+.container-body-login{
+    height: 100vh;
+}
+
+.container-body-login{
+    background-image: url("../images/imagen_utn.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container-body-login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+
+.navbarColor{
+    background-color: var(--hunyadiYellow);
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: none;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+    background-color: var(--Alabaster);
+}
+
+.fondoGris{
+    background-color: rgba(232, 233, 235, 0.90);
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    max-width: 330px;
+}
+
+.tituloCantina{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+}
+
+.tituloCantina:nth-child(2){
+    color: var(--hunyadiYellow);
+}
+
+.imagenUsuario{
+    width: 70px;
+}
+
+.inputLogin{
+    background-color: var(--Alabaster);
+}
+
+.botonIngresar{
+    background-color: var(--lapisLazulli);
+    border-radius: 8px;
+}
+
+.bordesInputs{
+    border: 0.13rem solid #000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding-left: 0px;
+    padding: 0px;
+}
+
+.textoCambioPassword{
+    font-size: 13px;
+}
+
+/* Fin CSS Login */
+
+/* Comienzo CSS resetPassword */
+
+.container-formCambiarPassword{
+    height: 100vh;
+    background-color: var(--antiFlashWhite);
+}
+
+.container-main-cambiarPassword{
+    max-width: 330px;
+}
+
+.title-form{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.form-control:focus {
+    border-color:rgba(100,100,100,1)!important;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+    background-color: var(--antiFlashWhite);
+}
+
+.no-border{
+    border: 0px;
+    border-bottom: 1px #000 solid;
+    border-radius: 0px;
+    background-color: var(--antiFlashWhite);
+}
+
+.label-inputs{
+    font-family: 'Inter', sans-serif;
+}
+
+.bg-button{
+    background-color: var(--lapisLazulli);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+}
+
+/* Fin CSS resetPassword */
+
+/* Comienzo CSS resetPassword2 */
+
+.container-cambiarPassword2{
+    height: 100vh;
+    background-color: var(--antiFlashWhite) !important;
+}
+
+.containerMain-cambiarPassword{
+    max-width: 300px;
+}
+
+.tituloContainer{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.subtituloContainer{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-volverMenu{
+    color: var(--lapisLazulli) !important;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    font-size: 14px !important;
+}
+
+/* Fin CSS resetPassword */
+
+/* Comienzo CSS miCarrito */
+
+.container-miCarrito{
+    height: 100vh;
+    background-color: var(--antiFlashWhite);
+}
+
+.container-carrito{
+    height: 300px;
+}
+
+hr{
+    opacity: 1;
+}
+
+.boton-eliminar{
+    font-size: 12px;
+    height: 20px;
+}
+
+.fontSize-card{
+    font-size: 15px;
+    font-weight: 400px
+}
+
+.imagen-trash{
+    padding-bottom: 2px;
+}
+
+.container-cantidad{
+    height: 20px;
+}
+
+.card{
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+    background-color: #EEEEEE;
+    width: 300px;
+}
+
+.precio, .precio-total{
+    font-weight: 600;
+}
+
+.cantidad{
+    background-color: var(--Alabaster);
+    width: 18px;
+    height: 18px;
+    font-size: 13px;
+}
+
+.titulos-principal{
+    font-weight: 600;
+}
+
+.total-a-pagar{
+    width: auto;
+    height: 60px;
+    background-color: var(--Alabaster);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.bg-button{
+    background-color: var(--lapisLazulli);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+}
+
+/* Fin CSS miCarrito */
+
+/* Comienzo CSS verCtaCte */
+
+.container-verCtaCte{
+    height: 100vh;
+    background-color: var(--antiFlashWhite) !important;
+}
+
+.container-balance{
+    background-color: var(--cafeNoir); /* este color cambia según la cantidad de plata debiendo */
+}
+
+.container-balance-wallet{
+    color: #000;
+}
+
+.container-balance-spanWallet{
+    width: auto;
+}
+
+.container-balance-precio{
+    font-weight: 600;
+}
+
+.container-infoPedido-NroPedido, .container-infoPedido-Fecha, .container-infoPedido-Subtotal{
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0px !important;
+}
+
+.container-infoPedido-hr{
+    color: #000000 !important;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+}
+
+.container-pedidos-NroPedido, .container-pedidos-Fecha, .container-pedidos-Subtotal{
+    font-size: 13px;
+}
+
+.container-pedidos-fila{
+    background-color: #EEAAB9; 
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+}
+
+/* Fin CSS verCtaCte */
+
+/* Comienzo CSS consultarProductos */
+
+div.main-container{
+    height: 100vh;
+    width: auto;
+    background-color: var(--Alabaster);
+}
+
+.container-find{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.logo{
+    width: 10px;
+    height: 10px;
+    color: var(--onyx);
+}
+
+.logo-search{
+    background-image: url(https://www.flaticon.com/free-icon-font/search_3917026?page=1&position=4&term=search&origin=search&related_id=3917026);
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter{
+    height: auto;
+    width: auto;
+    margin-left: 5%;
+}
+
+.input-interno{
+    border: none;
+}
+
+.img{
+    width: 100%;
+    height: auto;
+}
+
+.img-cantina{
+    border-radius: 20px;
+}
+
+.picture-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.title {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.title h1{
+    font-size: var(--lg);
+    font-weight: bold;
+}
+
+.title span{
+    font-size: var(--sm);
+}
+
+.cards-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 130px);
+    gap: 26px;
+    place-content: center;
+    margin-top: 24px;
+}
+
+.product-card{
+    width: 130px;
+    background-color: var(--antiFlashWhite);
+    border-radius: 15px 50px;
+}
+
+.product-container-img picture{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.product-img{
+    width: inherit;
+    height: 105px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.product-container-cart{
+    position: relative;
+    left: 101px;
+    bottom: 2px;
+    width: 28px;
+    height: 22px;
+    border-radius: 25px;
+    border: 1px solid var(--onyx);
+    background-color: var(--hunyadiYellow);
+}
+
+.product-cart{
+    width: 18px;
+    height: 18px;
+    color: var(--onyx);
+    position: relative;
+    top: 2px;
+    left: 5px;
+}
+
+.product-info {
+    padding: 2px;
+}
+
+.product-price{
+    font-size: var(--sm);
+    font-weight: 800;
+}
+
+.product-name{
+    font-size: var(--md);
+}
+
+/* Fin CSS consultarProductos */

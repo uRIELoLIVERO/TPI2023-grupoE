@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+<h1>Agregar al Carrito</h1>
+    
+    <p>Producto: {{ producto.nombre }}</p>
+    
+    <form method="post" action="{% url 'agregar_al_carrito' producto.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Agregar al carrito">
+    </form>
+{% endblock %}
