@@ -1,0 +1,133 @@
+@media (min-width: 1024px){
+    /* Comienzo CSS login */
+    
+    .fondoGris{
+        width: 600px;
+        max-width: 1200px;
+        height: 400px;
+    }
+
+    /* Fin CSS login */
+
+    /* Comienzo CSS resetPassword */
+    
+    .container-main-cambiarPassword{
+        width: 600px;
+        max-width: 1200px;
+    }
+    
+    /* Fin CSS resetPassword */
+
+    /* Comienzo CSS resetPassword2 */
+
+    .containerMain-cambiarPassword{
+        width: 600px;
+        max-width: 1100px;
+        height: auto;
+    }
+
+    .imagen{
+        width: 400px;
+        height: 300px;
+    }
+
+
+    .btn-volverMenu{
+        width: 300px;
+    }
+
+    /* Fin CSS resetPassword2 */
+
+    /* Comienzo CSS miCarrito */
+
+    .container-miCarrito{
+        background-color: #CCCCCC;
+    }
+
+    .container-carrito{
+        width: 75%;
+        padding: 40px;
+        background-color: var(--antiFlashWhite);
+        border-radius: 10px;
+    }
+
+    .card{
+        width: 100%;
+    }
+
+    .container-totalMasIrAPagar{
+        width: 40%;
+        float: right;
+    }
+
+    .total-a-pagar{
+        margin-top: 0px !important;
+    }
+
+    hr{
+        color: #CCCCCC;
+    }
+
+    .invisible{
+        visibility: visible !important;
+    }
+
+    /* Fin CSS miCarrito */
+
+    /* Comienzo CSS verCtaCte */
+
+    .container-verCtaCte{
+        background-color: #CCCCCC !important;
+    }
+
+    .containerMain-verCtaCte{
+        width: 80% !important;
+        height: auto;
+        padding: 12px;
+        margin: 20px auto;
+        background-color: var(--antiFlashWhite) !important;
+        border-radius: 10px;
+    }
+
+    /* Fin CSS verCtaCte */
+
+    /* Comienzo CSS consultarProductos */
+
+    div.main-container{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 !important;
+        margin: 0;
+    }
+
+    .primary-container{
+        background-color: var(--platinum);
+        width: 45%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-find{
+        width: 355px;
+    }
+
+    .secondary-container{
+        width: 55%;
+        height: 100vh;
+        padding-top: 32px;
+    }
+
+    div.title{
+        justify-content: space-around;
+    }
+
+    picture.picture-center{
+        padding: 0 48px;
+    }
+
+    /* Fin CSS consultarProductos */
+}
