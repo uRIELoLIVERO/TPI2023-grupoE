@@ -29,7 +29,7 @@ p{
     --lg: 1.6em;
 }
 div.main-container{
-    height: 100vh;
+    height: 100%;
     width: auto;
     background-color: var(--Alabaster);
 }
@@ -142,15 +142,14 @@ div.main-container{
 
 @media (min-width: 1024px) {
     div.main-container{
-        width: 100%;
+        width: 100vw;
         display: flex;
         justify-content: space-between;
         padding: 0 !important;
-        margin: 0;
     }
     .primary-container{
         background-color: var(--platinum);
-        width: 45%;
+        width: 45vw;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -161,7 +160,7 @@ div.main-container{
         width: 355px;
     }
     .secondary-container{
-        width: 55%;
+        width: 55vw;
         height: 100vh;
         padding-top: 32px;
     }
