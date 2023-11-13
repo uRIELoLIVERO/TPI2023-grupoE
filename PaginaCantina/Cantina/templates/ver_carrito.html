@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+<h1>Carrito de Compras</h1>
+
+    {% if productos_en_carrito %}
+        <ul>
+            {% for producto_en_carrito in productos_en_carrito %}
+                <li>
+                    {{ producto_en_carrito.producto.nombre }}
+                    <img src="{{ producto_en_carrito.producto.imagen.url }}" alt="{{ producto_en_carrito.producto.nombre }}">
+                    Subtotal: ${{ producto_en_carrito.producto.precioUnitario * producto_en_carrito.cantidad }}
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Total: ${{ carrito.total }}</p>
+    {% else %}
+        <p>El carrito está vacío.</p>
+    {% endif %}
+    {% endblock %}

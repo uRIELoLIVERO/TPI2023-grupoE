@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block content %} 
+  <h1>Lista de Productos Disponibles</h1>
+    
+    {% for producto in productos %}
+        <div>
+            <h2>{{ producto.nombre }}</h2>
+            <p>Precio: ${{ producto.precioUnitario }}</p>
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen_url }}" alt="{{ producto.nombre }}">
+            {% endif %}
+            <form method="post" action="{% url 'agregar_al_carrito' producto.id %}">
+                {% csrf_token %}
+                {{ carrito_form.as_p }}
+                <input type="submit" value="Agregar al carrito">
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}
