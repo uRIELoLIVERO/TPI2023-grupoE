@@ -19,8 +19,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html, body{
-    height: 100%;
+.container-verCtaCte{
+    height: 100vh;
     background-color: var(--antiFlashWhite) !important;
 }
 
@@ -63,11 +63,11 @@ html, body{
 
 
 @media (min-width: 1000px){
-    body, html{
+    .container-verCtaCte{
         background-color: #CCCCCC !important;
     }
 
-    main{
+    .containerMain-verCtaCte{
         width: 80% !important;
         height: auto;
         padding: 12px;
