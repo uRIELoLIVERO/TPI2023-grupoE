@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import Select, DateInput, NumberInput, TextInput, PasswordInput, DecimalField, ImageField, BooleanField, ModelMultipleChoiceField, FileInput, CheckboxInput
-
+from django.db.models import Min, Max
 class AreaForm(forms.ModelForm):
     class Meta:
         model = Area
@@ -52,6 +52,7 @@ class ProductoForm(forms.ModelForm):
             'imagen': FileInput(attrs={'class': 'form-control'}),  
             'estado': CheckboxInput(attrs={'class': 'form-check-input'}),
         }
+
 
 class DetallePedidoForm(forms.ModelForm):
     class Meta:
@@ -128,3 +129,17 @@ class InformeCuentasCorrientesForm(forms.ModelForm):
         }
 class PasswordResetForm(forms.Form):
     email = forms.EmailField(label='Correo Electrónico', max_length=254)
+
+class TuFormularioDeFiltro(forms.Form):
+    productos = Producto.objects.filter(estado=True)
+    
+    min_precio = productos.aggregate(Min('precioUnitario'))['precioUnitario__min']
+    max_precio = productos.aggregate(Max('precioUnitario'))['precioUnitario__max']
+
+    tipo_orden = forms.ChoiceField(choices=[
+        ('', 'Seleccione un tipo de orden'),
+        ('A-Z', 'A-Z'),
+        ('Z-A', 'Z-A'),
+        ('menor-mayor', 'Menor a Mayor Precio'),
+        ('mayor-menor', 'Mayor a Menor Precio'),
+    ], required=False)
