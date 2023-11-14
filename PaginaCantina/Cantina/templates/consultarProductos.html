@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load static %}
+  <div class="container pe-5 ps-5 main-container">
+
+    <!-- Parte de la búsqueda y la imagen de la cantina -->
+    <div class="primary-container">
+      <div class="container-find">
+        <div class="form-control search">
+          <span type="submit">
+            <img src="{% static 'images/find.png' %}" alt="" class="logo logo-search">
+          </span>
+          <input class="form-control me-2 input-interno" type="search" placeholder="Buscar Producto" aria-label="Search">
+        </div>
+        <div class="form-control filter">
+          <img src="{% static 'images/setting.png' %}" alt="" class="logo logo-filter">
+        </div>
+      </div>
+      <picture class="picture-center">
+        <img src="{% static 'images/cantina.jpg' %}" alt="" class="img img-fluid img-cantina">
+      </picture>
+    </div>
+
+    <!-- Parte de la lista de productos -->
+    <div class="secondary-container">
+      <div class="title">
+        <h1>Comidas Populares</h1>
+        <span>Ver todo</span>
+      </div>
+
+      <section class="container">
+        <div class="cards-container">
+
+          {% for producto in productos_disponibles %}
+          <div class="product-card">
+            <div class="product-info">
+              <p class="product-name">{{ producto.nombre }}</p>
+              <p class="product-price">${{ producto.precioUnitario }}</p>
+            </div>
+            <div class="product-container-img">
+              <picture>
+                <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="product-img">
+              </picture>
+              <div class="product-container-cart">
+                
+                 <a href=""><img src="{% static 'images/shopping-cart-add.png' %}" alt="" class="product-cart"></a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </section>
+    </div>
+
+  </div>
+{% endblock %}

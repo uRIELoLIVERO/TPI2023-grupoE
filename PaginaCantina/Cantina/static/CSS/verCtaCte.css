@@ -1,0 +1,79 @@
+:root{
+    --hunyadiYellow: #EDAE49;
+    --onyx: #313638;
+    --Alabaster: #E0DFD5;
+    --antiFlashWhite: #E8E9EB ;
+    --sandyBrown: #F19953;
+    --cafeNoir: #56351E;
+    --asparagus: #6A9F56;
+    --celadon: #ACD8AA;
+    --vermilion: #E93835;
+    --blush: #E0677F;
+    --lapisLazulli: #2660A4;
+    --sm: .8em;
+    --md: 1.2em;
+    --lg: 1.6em;
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body{
+    height: 100%;
+    background-color: var(--antiFlashWhite) !important;
+}
+
+.container-balance{
+    background-color: var(--cafeNoir); /* este color cambia según la cantidad de plata debiendo */
+}
+
+.container-balance-wallet{
+    color: #000;
+}
+
+.container-balance-spanWallet{
+    width: auto;
+}
+
+.container-balance-precio{
+    font-weight: 600;
+}
+
+.container-infoPedido-NroPedido, .container-infoPedido-Fecha, .container-infoPedido-Subtotal{
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0px !important;
+}
+
+.container-infoPedido-hr{
+    color: #000000 !important;
+    /* width: 95% !important; */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+}
+
+.container-pedidos-NroPedido, .container-pedidos-Fecha, .container-pedidos-Subtotal{
+    font-size: 13px;
+}
+
+.container-pedidos-fila{
+    background-color: #EEAAB9; 
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+}
+
+
+@media (min-width: 1000px){
+    body, html{
+        background-color: #CCCCCC !important;
+    }
+
+    main{
+        width: 80% !important;
+        height: auto;
+        padding: 12px;
+        margin: 20px auto;
+        background-color: var(--antiFlashWhite) !important;
+        border-radius: 10px;
+    }
+
+}

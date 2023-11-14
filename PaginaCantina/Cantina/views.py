@@ -38,4 +38,4 @@ def lista_productos(request):
     }
 
     # Renderizar el template con la información
-    return render(request, 'lista_productos.html', context)
+    return render(request, 'consultarProductos.html', context)
