@@ -3,8 +3,8 @@ from django.urls import path
 from .views import *
 from . import views
 urlpatterns = [
-    path('', mysite),
-    path('login/', login_view, name='login'),
+    path('a', mysite),
+    path('', login_view, name='login'),
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name='resetPassword.html'), name='password_reset'),
     path('reset_password/done/', auth_views.PasswordResetDoneView.as_view(template_name='resetPasswordDone.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='resetPasswordConfirm.html'), name='password_reset_confirm'),
