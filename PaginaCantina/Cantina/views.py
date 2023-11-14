@@ -25,8 +25,10 @@ def login_view(request):
         form = AuthenticationForm()
 
     return render(request, 'login.html', {'form': form})
-
-
+def miCarrito(request):
+    return render(request, 'miCarrito.html')
+def detallePago(request):
+    return render(request, 'detallePago.html')
 
 def lista_productos(request):
     # Filtrar los productos con estado=True
