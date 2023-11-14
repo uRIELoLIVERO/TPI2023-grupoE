@@ -1,7 +1,7 @@
 from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import Select, DateInput, NumberInput, TextInput, PasswordInput, DecimalField, ImageField, BooleanField, ModelMultipleChoiceField
+from django.forms import Select, DateInput, NumberInput, TextInput, PasswordInput, DecimalField, ImageField, BooleanField, ModelMultipleChoiceField, FileInput, CheckboxInput
 
 class AreaForm(forms.ModelForm):
     class Meta:
@@ -21,94 +21,43 @@ class AreaForm(forms.ModelForm):
             
         }
 
+
 class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ['nombreYApellido', 'usuario', 'contrasenia', 'dni', 'legajo', 'cuentaCorriente', 'fechaNacimiento', 'area']
+        fields = ['nombreYApellido', 'dni', 'legajo', 'cuentaCorriente', 'fechaNacimiento', 'area']
         widgets = {
-            'nombreYApellido': TextInput(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'usuario' : TextInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'contrasenia' : PasswordInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'dni' :NumberInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'legajo' : NumberInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'cuentaCorriente' : DecimalField(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'fechaNacimiento' : DateInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'area' : Select(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
+            'nombreYApellido': TextInput(attrs={'class': 'form-control'}),
+            'dni': NumberInput(attrs={'class': 'form-control'}),
+            'legajo': NumberInput(attrs={'class': 'form-control'}),
+            'cuentaCorriente': NumberInput(attrs={'class': 'form-control'}),
+            'fechaNacimiento': DateInput(attrs={'class': 'form-control'}),
+            'area': Select(attrs={'class': 'form-control'}),
         }
+
+        # Nuevos campos para el usuario
+        user_username = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}))
+        user_password = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
+ 
 
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = ['nombre', 'descripcion', 'precioUnitario', 'stock', 'imagen', 'estado']
         widgets = {
-            'nombre': TextInput(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'descripcion' : TextInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'precioUnitario' : DecimalField(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'stock' :NumberInput(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'imagen' : ImageField(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
-            'estado' : BooleanField(
-                attrs={
-                    'class': 'form-control',
-                }
-            ),
+            'nombre': TextInput(attrs={'class': 'form-control'}),
+            'descripcion': TextInput(attrs={'class': 'form-control'}),
+            'precioUnitario': NumberInput(attrs={'class': 'form-control'}),
+            'stock': NumberInput(attrs={'class': 'form-control'}),
+            'imagen': FileInput(attrs={'class': 'form-control'}),  
+            'estado': CheckboxInput(attrs={'class': 'form-check-input'}),
         }
+
 
 class DetallePedidoForm(forms.ModelForm):
     class Meta:
         model = DetallePedido
-        fields = ['produto', 'cantidad']
+        fields = ['producto', 'cantidad']
         widgets = {
             'producto': Select(
                 attrs={
@@ -125,25 +74,12 @@ class DetallePedidoForm(forms.ModelForm):
 class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
-        fields = ['cliente', 'detalles', 'fechaPedido']
-        widgets = {
-            'cliente': Select(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'detalles': ModelMultipleChoiceField(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'fechaPedido' : DateInput(
-                attrs={
-                    'class': 'form-control',
-                    'type': 'date'
-                }
-            ),
-        }
+        fields = ['cliente', 'detalles']
+
+    detalles = forms.MultipleChoiceField(
+        choices=[(detalle.id, str(detalle)) for detalle in DetallePedido.objects.all()],
+        widget=forms.CheckboxSelectMultiple,
+    )
 
 class AdminProfileForm(forms.ModelForm):
     class Meta:
@@ -172,7 +108,7 @@ class CuentaCorrienteForm(forms.ModelForm):
                     'class': 'form-control'
                 }
             ),
-            'saldo': DecimalField( 
+            'saldo': NumberInput( 
                 attrs={
                     'class': 'form-control'
                 }
@@ -182,17 +118,14 @@ class CuentaCorrienteForm(forms.ModelForm):
 class InformeCuentasCorrientesForm(forms.ModelForm):
     class Meta:
         model = InformeCuentasCorrientes
-        fields = ['emisor', 'fecha_emision']
+        exclude = ['fecha_emision']
+        fields = ['emisor']
         widgets = {
             'emisor': Select(   # Raro
                 attrs={
                     'class': 'form-control'
                 }
-            ),
-            'fecha_emision' : DateInput(
-                attrs={
-                    'class': 'form-control',
-                    'type': 'date'
-                }
-            ),
+            )
         }
+class PasswordResetForm(forms.Form):
+    email = forms.EmailField(label='Correo Electrónico', max_length=254)
