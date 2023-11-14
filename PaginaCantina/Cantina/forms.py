@@ -53,6 +53,7 @@ class ProductoForm(forms.ModelForm):
             'estado': CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
+
 class DetallePedidoForm(forms.ModelForm):
     class Meta:
         model = DetallePedido
