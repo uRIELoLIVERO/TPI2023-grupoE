@@ -1,0 +1,110 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    background-image: url("../images/imagen_utn.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Puedes ajustar la opacidad modificando el último valor (0.5 en este caso) */
+    z-index: -1;
+}
+
+
+main{
+    max-width: 330px;
+}
+
+:root {
+    --hunyadiYellow: #EDAE49;
+    --onyx: #313638;
+    --Alabaster: #E0DFD5;
+    --antiFlashWhite: #E8E9EB ;
+    --sandyBrown: #F19953;
+    --cafeNoir: #56351E;
+    --asparagus: #6A9F56;
+    --celadon: #ACD8AA;
+    --vermilion: #E93835;
+    --blush: #E0677F;
+    --lapisLazulli: #2660A4;
+    --sm: .8em;
+    --md: 1.2em;
+    --lg: 1.6em;
+}
+
+.navbarColor{
+    background-color: var(--hunyadiYellow);
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: none;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+    background-color: var(--Alabaster);
+}
+
+.fondoGris{
+    background-color: rgba(232, 233, 235, 0.90);
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+.tituloCantina{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+}
+
+.tituloCantina:nth-child(2){
+    color: var(--hunyadiYellow);
+}
+
+.imagenUsuario{
+    width: 70px;
+}
+
+.inputLogin{
+    background-color: var(--Alabaster);
+}
+
+.botonIngresar{
+    background-color: var(--lapisLazulli);
+    border-radius: 8px;
+}
+
+.bordesInputs{
+    border: 0.13rem solid #000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding-left: 0px;
+    padding: 0px;
+}
+
+.textoCambioPassword{
+    font-size: 13px;
+}
+
+
+@media (min-width: 1000px){
+    main{
+        width: 600px;
+        max-width: 1200px;
+        height: 400px;
+    }
+}

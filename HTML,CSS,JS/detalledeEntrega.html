@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .cvu-container {
+          display: none;
+        }
+    
+        #tipoCuentaTransferencia:checked ~ #cvuContainer {
+          display: block;
+        }
+    
+        #tipoCuentaCuentaCorriente:checked ~ #areasSelect {
+          display: block;
+        }
+      </style>
+    <title>Detalles de Pago</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #edae49;">
+            <a class="navbar-brand" href="#">
+                <img src="images\logo_horizontal_blanco_utn.png" alt="Logo" style="max-width: 150px; height: auto;">
+            </a>
+        </nav>
+    </header>
+    <div class="global-conteiner" style="height: 90vh; background-color: #E8E9EB;">
+        <div class="container m-auto pt-3">
+            <div class="progress style=" style="width: 90%; height: 20px; flex-shrink: 0; background-color: #727272; border-radius: 25px; border: 2px solid #727272;" >
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 33%; height: auto; background-color: #ACD8AA; border-radius: 25px;"></div>
+            </div>
+        </div>
+        <div class="detalleEntrega m-auto pt-3">
+            <h3 style="color: #F09042; font-size: 18px; font-style:normal;font-weight: 700 ; padding-left: 35px; padding-bottom: 10px;">Detalle de Entrega</h3>
+            <p style="color: #8F8F8F; font-size: 12px; font-style: normal; font-weight: 500; line-height: normal; padding-left: 36px; padding-top: 15px;">Fecha y Hora</p>
+            <label style="width: 100%;">
+                <input type="datetime-local" id="Calendario" name="Calendario" style="width: 80%; height: 45px; margin-left: 35px; border-radius: 3px; border: 1px solid #000; padding: 0 16px;">
+            </label>
+            <p style="color: #8F8F8F; font-size: 12px; font-style: normal; font-weight: 500; line-height: normal; padding-left: 36px;">Area:</p>
+            <select class="control-form" style="width: 80%; height: 45px; margin-left: 35px; border-radius: 3px; border: 1px solid #000; padding: 0 16px;">
+                <option>TICS</option>
+                <option>CICOM</option>
+            </select>
+            <div class="form-group">
+                <p style="color: #8F8F8F; font-size: 12px; font-style: normal; font-weight: 500; line-height: normal; padding-left: 36px; padding-top: 15px;">Notas:</p>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" style="width: 80%; margin-left: 35px; border-radius: 3px; border: 1px solid #000;  padding: 0 16px;"></textarea>
+              </div>
+            
+            <!-- <p style="color: #8F8F8F; font-size: 12px; font-style: normal; font-weight: 500; line-height: normal; padding-left: 36px; padding-top: 30px;">Metodos de Pago:</p>
+            <form style="width: 80%; margin-left: 35px;">
+                <label for="tipoCuentaTransferencia">Transferencia</label>
+                <input type="radio" id="tipoCuentaTransferencia" name="tipoCuenta" value="transferencia">
+            
+                <label for="tipoCuentaCuentaCorriente" style="margin-left: 10%;">Cuenta Corriente</label>
+                <input type="radio" id="tipoCuentaCuentaCorriente" name="tipoCuenta" value="cuentaCorriente">
+                <br>
+            
+                <div id="cvuContainer" class="cvu-container" style="margin-top: 5%;">
+                    <label for="cvu">
+                        <p>CVU: 123124354355653476</p>
+                    </label>
+                </div>
+            
+                <div id="areasSelect" class="cvu-container" style="margin-top: 5%;">
+                <label for="areas">Seleccione un área:</label>
+                <select id="areas" name="areas">
+                    <option value="CICOM">CICOM</option>
+                    <option value="TICS">TICS</option>
+                    ## Agrega más opciones según sea necesario ##
+                </select>
+                </div>
+            </form> -->
+            <!-- <h3 style="color: #F09042; font-size: 18px; font-style:normal;font-weight: 700 ; padding-left: 35px; padding-top: 0%; margin-top: 35px;">Tu pedido</h3>
+            <div class="importeTotal" style="width: 80%; height: 45px; margin-left: 35px;padding: 2%; border-radius: 3px; border: 1px solid #000; display: flex; justify-content: space-between; align-items: center;">
+                <p style="margin: 0; line-height: 1;">Total</p>
+                <p style="margin: 0; line-height: 1;">$902.66</p>
+            </div> -->
+            <button class="btn btn-primary" type="submit" style="color: #FFF; background-color: #2660A4; font-size: 14px; font-style: normal; font-weight: 500; line-height: normal; width: 80%; margin-left: 35px; position: absolute; bottom: 100px ; border-radius: 30px;">Continuar</button>
+            <button class="btn btn-primary" type="submit" style="color: #FFF; background-color: #E93835; font-size: 14px; font-style: normal; font-weight: 500; line-height: normal; width: 80%; margin-left: 35px; position: absolute; bottom: 60px ; border-radius: 30px;">Cancelar</button>
+        </div>
+    </div>
+     <!-- Bootstrap JS y dependencias  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -15,15 +15,26 @@
     --md: 1.2em;
     --lg: 1.6em;
 }
-div p{
+
+.container-success{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.container-success p{
     font-weight: bold;
     font-size: var(--lg);
 }
-div a{
-    font-size: 6px;
-    font-weight: bold;
+.container-success-button a{
+    border: 1px solid var(--onyx);
+    background-color: white;
+    color: var(--lapisLazulli);
+    font-size: var(--sm);
 }
-.container-success-button{
+.container-success-button a:first-child{
     background-color: var(--lapisLazulli);
     color: white;
+}
+@media (min-width: 1024px) {
+
 }
