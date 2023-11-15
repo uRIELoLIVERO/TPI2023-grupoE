@@ -105,3 +105,21 @@ div.card-request{
     font-size: var(--md);
     font-weight: bold;
 }
+
+.accordion-button:not(.collapsed){
+    color: var(--bs-accordion-btn-color) !important;
+    background-color: var(--bs-body-bg) !important;
+    outline:0 !important;
+}
+
+.accordion-button:focus{
+    z-index: 3;
+    border-color: transparent !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.btn-cancelarPedido{
+    background-color: var(--vermilion) !important;
+    font-size: var(--md) !important;
+}
