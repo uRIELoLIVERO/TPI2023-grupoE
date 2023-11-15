@@ -1,4 +1,5 @@
  <!DOCTYPE html>
+ {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +24,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #edae49;">
             <a class="navbar-brand" href="#">
-                <img src="images\logo_horizontal_blanco_utn.png" alt="Logo" style="max-width: 150px; height: auto;">
+                <img src="{% static 'images/logo_horizontal_blanco_utn.png' %}" alt="Logo" style="max-width: 150px; height: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
