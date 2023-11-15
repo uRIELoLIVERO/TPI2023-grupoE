@@ -11,6 +11,12 @@ def mysite(request):
     # Lógica de negocio aquí
     return render(request, 'mysite.html')
 
+def detalledePago(request):
+    return render(request, 'detalledePago.html')
+
+def detalledeEntrega(request):
+    return render(request, 'detalledeEntrega.html')
+
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
