@@ -3,37 +3,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ClienteForm
-from .forms import UserCreationFormExtended
+from .forms import ClienteForm, UserCreationFormExtended, TuFormularioDeFiltro, DetallePedidoForm
 from .models import *
 from django.views import View
-from .forms import DetallePedidoForm
-
-def lista_productos(request):
-    # Filtrar los productos con estado=True
-    productos_disponibles = Producto.objects.filter(estado=True)
-
-    # Manejar el formulario de DetallePedido
-    if request.method == 'POST':
-        detalle_form = DetallePedidoForm(request.POST)
-        if detalle_form.is_valid():
-            detalle_pedido = detalle_form.save(commit=False)
-            # Guardar el detalle_pedido en la sesión del usuario
-            carrito = request.session.get('carrito', [])
-            carrito.append({
-                'producto_id': detalle_pedido.producto.id,
-                'cantidad': detalle_pedido.cantidad,
-            })
-            request.session['carrito'] = carrito
-
-    # Pasar la información al template
-    context = {
-        'productos_disponibles': productos_disponibles,
-        'detalle_form': DetallePedidoForm(),
-    }
-
-    # Renderizar el template con la información
-    return render(request, 'consultarProductos.html', context)
 
 def mysite(request):
     # Lógica de negocio aquí
@@ -46,7 +18,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             messages.success(request, 'Inicio de sesión exitoso.')
-            return redirect(reverse('lista_productos'))
+            return redirect(reverse('consultarProductos'))
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
     else:
@@ -84,14 +56,46 @@ def miCarrito(request):
 def detallePago(request):
     return render(request, 'detallePago.html')
 
-def lista_productos(request):
-    # Filtrar los productos con estado=True
+def consultarProductos(request):
     productos_disponibles = Producto.objects.filter(estado=True)
 
-    # Pasar la información al template
+    if request.method == 'GET':
+        form = TuFormularioDeFiltro(request.GET)
+
+        if form.is_valid():
+            rango_precio = form.cleaned_data.get('rango_precio')
+            tipo_orden = form.cleaned_data.get('tipo_orden')
+
+            if rango_precio:
+                min_precio, max_precio = map(int, rango_precio.split('-'))
+                productos_disponibles = productos_disponibles.filter(precioUnitario__range=(min_precio, max_precio))
+
+            if tipo_orden == 'A-Z':
+                productos_disponibles = productos_disponibles.order_by('nombre')
+            elif tipo_orden == 'Z-A':
+                productos_disponibles = productos_disponibles.order_by('-nombre')
+            elif tipo_orden == 'menor-mayor':
+                productos_disponibles = productos_disponibles.order_by('precioUnitario')
+            elif tipo_orden == 'mayor-menor':
+                productos_disponibles = productos_disponibles.order_by('-precioUnitario')
+
+    if request.method == 'POST':
+        detalle_form = DetallePedidoForm(request.POST)
+        if detalle_form.is_valid():
+            detalle_pedido = detalle_form.save(commit=False)
+            # Guardar el detalle_pedido en la sesión del usuario
+            carrito = request.session.get('carrito', [])
+            carrito.append({
+                'producto_id': detalle_pedido.producto.id,
+                'cantidad': detalle_pedido.cantidad,
+            })
+            request.session['carrito'] = carrito
+ 
     context = {
         'productos_disponibles': productos_disponibles,
+        'form': TuFormularioDeFiltro(),
+        'detalle_form': DetallePedidoForm(),
     }
 
-    # Renderizar el template con la información
     return render(request, 'consultarProductos.html', context)
+

@@ -13,15 +13,23 @@
           </span>
           <input class="form-control me-2 input-interno" type="search" placeholder="Buscar Producto" aria-label="Search">
         </div>
-        <div class="form-control filter">
-          <img src="{% static 'images/setting.png' %}" alt="" class="logo logo-filter">
-        </div>
+        <div class="form-control filter" id="filter-options">
+          <a href="#" id="toggle-filter">
+              <img src="{% static 'images/setting.png' %}" alt="" class="logo logo-filter">
+          </a>
+      </div>
+      
+      <form method="get" action="{% url 'consultarProductos' %}" id="filter-form">
+          {{ form.as_p }}
+          <button type="submit">Filtrar</button>
+      </form>
       </div>
       <picture class="picture-center">
         <img src="{% static 'images/cantina.jpg' %}" alt="" class="img img-fluid img-cantina">
       </picture>
+      <a href="{% url 'miCarrito' %}" class="btn btn-primary">Ir a mi Carrito</a>
     </div>
-    <a href="{% url 'miCarrito' %}" class="btn btn-primary">Ir a mi Carrito</a>
+
     <!-- Parte de la lista de productos -->
     <div class="secondary-container" id="product-list-container">
       <div class="title">
@@ -31,25 +39,22 @@
 
       <section class="container">
         <div class="cards-container">
-
           {% for producto in productos_disponibles %}
-          <div class="product-card">
-            <div class="product-info">
-              <p class="product-name">{{ producto.nombre }}</p>
-              <p class="product-price">${{ producto.precioUnitario }}</p>
-            </div>
-            <div class="product-container-img">
-              <picture>
-                <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="product-img">
-              </picture>
-              <div class="product-container-cart">
-                
-                 <a href=""><img src="{% static 'images/shopping-cart-add.png' %}" alt="" class="product-cart"></a>
+            <div class="product-card">
+              <div class="product-info">
+                <p class="product-name">{{ producto.nombre }}</p>
+                <p class="product-price">${{ producto.precioUnitario }}</p>
+              </div>
+              <div class="product-container-img">
+                <picture>
+                  <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="product-img">
+                </picture>
+                <div class="product-container-cart">
+                  <a href=""><img src="{% static 'images/shopping-cart-add.png' %}" alt="" class="product-cart"></a>
+                </div>
               </div>
             </div>
-          </div>
           {% endfor %}
-
         </div>
       </section>
     </div>
@@ -57,4 +62,5 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="{% static 'js/findProducto.js' %} " defer></script>
+  <script src="{% static 'js/filterProductos.js' %} " defer></script>
 {% endblock %}

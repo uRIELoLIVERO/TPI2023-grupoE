@@ -11,6 +11,6 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='resetPasswordComplete.html'), name='password_reset_complete'),
     path('miCarrito/', views.miCarrito, name='miCarrito'),
     path('detallePago/',views.detallePago, name='detallePago'),
-    path('productos/', lista_productos, name='lista_productos'),
+    path('productos/', consultarProductos, name='consultarProductos'),
 ]
 
