@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miCarrito</title>
+    <script src="https://kit.fontawesome.com/538b2ed319.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../HTML,CSS,JS/CSS/miCarrito.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container-miCarrito d-flex align-items-start">
+    <div class="container d-flex align-items-center">
+        <main class="m-auto container-carrito">
+            <div class="container p-0">
+                <div class="row align-items-center">
+                    <div class="col d-inline-flex">
+                        <span class="me-2 align-middle d-flex align-items-center"><img class="" src="./images/return 1.svg" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal">Mi carrito</p>
+                    </div>
+                    <div class="col text-end">
+                        <p class="h5 m-0 titulos-principal">{{ total_items }} items</p>
+                    </div>
+                </div>
+                <hr class="border-black m-1 mb-3">
+            </div>
+            
+            <div class="card">
+                {% for item in productos_en_carrito %}
+                    <div class="row fila-objeto">
+                        <div class="ps-3 pe-0 col-3 columna-imagen align-self-center">
+                            <img class="img-fluid mx-auto d-block" src="{{ item.producto.imagenURL }}" alt="">
+                        </div>
+                        <div class="col-9 mt-2 mb-2 columna-detalles align-self-center">
+                            <div class="row align-items-center fila-detalles">
+                                <div class="col columna-nombre">
+                                    <p class="m-0 fontSize-card text-center">{{ item.producto.nombre }}</p>
+                                </div>
+                                <!-- ... (resto del contenido) ... -->
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="container-totalMasIrAPagar">
+                <div class="total-a-pagar mt-4 row d-flex align-items-center m-0 rounded-4">
+                    <div class="col">
+                        <p class="mb-0">Total</p>
+                    </div>
+                    <div class="col text-end">
+                        <p class="mb-0 precio-total">${{ total_precio }}</p>
+                    </div>
+                </div>
+                <div class="d-grid mx-auto mt-3 container-irAPagar">
+                    <a href="{% url 'detallePago' %}" class="btn btn-primary border-dark text-light rounded-4 pt-1 pb-1 bg-button">Ir a pagar</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>
