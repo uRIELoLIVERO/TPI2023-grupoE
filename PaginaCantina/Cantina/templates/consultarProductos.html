@@ -6,7 +6,7 @@
 
     <!-- Parte de la búsqueda y la imagen de la cantina -->
     <div class="primary-container">
-      <div class="container-find">
+      <div id="containerFind" class="container-find margin-largo">
         <div class="form-control search">
           <span type="submit">
             <img src="{% static 'images/find.png' %}" alt="" class="logo logo-search">
@@ -14,20 +14,20 @@
           <input class="form-control me-2 input-interno" type="search" placeholder="Buscar Producto" aria-label="Search">
         </div>
         <div class="form-control filter" id="filter-options">
-          <a href="#" id="toggle-filter">
+          <a href="#">
               <img src="{% static 'images/setting.png' %}" alt="" class="logo logo-filter">
           </a>
+        </div>
       </div>
-      
-      <form method="get" action="{% url 'consultarProductos' %}" id="filter-form">
+      <div id="filter-form" class="inactive container-filter">
+        <form method="get" action="{% url 'consultarProductos' %}">
           {{ form.as_p }}
           <button type="submit">Filtrar</button>
-      </form>
+        </form>
       </div>
-      <picture class="picture-center">
+      <picture class="picture-center margin-largo">
         <img src="{% static 'images/cantina.jpg' %}" alt="" class="img img-fluid img-cantina">
       </picture>
-      <a href="{% url 'miCarrito' %}" class="btn btn-primary">Ir a mi Carrito</a>
     </div>
 
     <!-- Parte de la lista de productos -->

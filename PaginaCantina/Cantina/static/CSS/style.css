@@ -41,10 +41,10 @@
 #infoMenu .dropdown{
     height: 48.5px;
 }
-.nav-item div p{
+.nav-item div a{
     color: var(--onyx);
 }
-.nav-pills li div p{
+.nav-pills li div a{
     font-size: var(--lg);
     display: flex;
     align-items: center;

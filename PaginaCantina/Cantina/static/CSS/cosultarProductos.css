@@ -36,6 +36,11 @@ div.main-container{
 .container-find{
     display: flex;
     justify-content: space-between;
+}
+.margin-largo{
+    margin-bottom: 55.3333px;
+}
+.margin-corto{
     margin-bottom: 12px;
 }
 .logo{
@@ -73,6 +78,7 @@ div.main-container{
     justify-content: center;
     align-items: center;
     padding-bottom: 16px;
+    margin-top: 12px;
 }
 .title {
     display: flex;
@@ -141,16 +147,15 @@ div.main-container{
 
 @media (min-width: 1024px) {
     div.main-container{
-        width: 100%;
+        width: 100vw;
         display: flex;
         justify-content: space-between;
         padding: 0 !important;
-        margin: 0;
     }
     .primary-container{
         background-color: var(--platinum);
-        width: 45%;
-        height: 100vh;
+        width: 45vw;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -160,7 +165,7 @@ div.main-container{
         width: 355px;
     }
     .secondary-container{
-        width: 55%;
+        width: 55vw;
         height: 100vh;
         padding-top: 32px;
     }
@@ -169,6 +174,6 @@ div.main-container{
     }
     picture.picture-center{
         padding: 0 48px;
-    }
 
+    }
 }

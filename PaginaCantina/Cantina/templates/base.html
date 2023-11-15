@@ -25,7 +25,7 @@
           <a class="nav-link active" aria-current="page" href="#">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mi Carrito</a>
+          <a class="nav-link" href="{% url 'miCarrito' %}">Mi Carrito</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Mi Cta. Cte.</a>
@@ -54,22 +54,22 @@
               <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/coffee-cup.png' %} " alt="" height="30px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request text-center">Productos</p>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/coffee-cup.png' %} " alt="" height="30px"></span><a href="{% url 'consultarProductos' %}"class="h5 mt-0 mb-0 titulos-principal fecha-request text-center">Productos</a>
                   </div>
                 </li>
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-cart-aside.png' %} " alt="" height="30px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi carrito</p>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-cart-aside.png' %} " alt="" height="30px"></span><a href="{% url 'miCarrito' %}" class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi carrito</a>
                   </div>
                 </li>
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/wallet.png' %} " alt="" height="30px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi Cta.Cte</p>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/wallet.png' %} " alt="" height="30px"></span><a class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi Cta.Cte</a>
                   </div>
                 </li>
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-bag.png' %} " alt="" height="30px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">Pedidos</p>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-bag.png' %} " alt="" height="30px"></span><a class="h5 mt-0 mb-0 titulos-principal fecha-request">Pedidos</a>
                   </div>
                 </li>
               </ul>
