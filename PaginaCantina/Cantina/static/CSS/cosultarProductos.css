@@ -28,11 +28,11 @@ p{
     --lg: 1.6em;
 }
 div.main-container{
-    height: 100vh;
+    padding-top: 75px;
+    height: 100%;
     width: auto;
     background-color: var(--Alabaster);
 }
-
 .container-find{
     display: flex;
     justify-content: space-between;
@@ -155,7 +155,7 @@ div.main-container{
     .primary-container{
         background-color: var(--platinum);
         width: 45vw;
-        height: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -166,7 +166,7 @@ div.main-container{
     }
     .secondary-container{
         width: 55vw;
-        height: 100vh;
+        height: 100%;
         padding-top: 32px;
     }
     div.title{

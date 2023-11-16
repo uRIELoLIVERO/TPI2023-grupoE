@@ -41,6 +41,18 @@
 #infoMenu .dropdown{
     height: 48.5px;
 }
+.fixed-top{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.navbar{
+    display: flex !important;
+    align-content: space-between !important;
+    align-items: center;
+}
 .nav-item div a{
     color: var(--onyx);
 }
@@ -48,7 +60,7 @@
     font-size: var(--lg);
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 }
 .nav-pills li{
     margin: 8px 0;
@@ -65,4 +77,10 @@
 }
 #desktopMenu{
     display: none;
+}
+#desktopMenu li a{
+    color: var(--onyx) !important;
+}
+#burgerMenu{
+    display:  fixed;
 }
