@@ -27,6 +27,9 @@ p{
     --md: 1.2em;
     --lg: 1.6em;
 }
+.fondoParcheado{
+    background: var(--Alabaster);
+}
 div.main-container{
     padding-top: 75px;
     height: 100%;
@@ -146,6 +149,15 @@ div.main-container{
 }
 
 @media (min-width: 1024px) {
+    .fondoParcheado{
+        background: linear-gradient(
+            to right,
+            var(--platinum) 0%,
+            var(--platinum) 50%,
+            var(--Alabaster) 50%,
+            var(--Alabaster) 100%
+        );
+    }
     div.main-container{
         width: 100vw;
         display: flex;
