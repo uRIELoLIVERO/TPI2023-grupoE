@@ -62,8 +62,7 @@ main{
 
 .fondoGris{
     background-color: rgba(232, 233, 235, 0.90);
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
+    border-radius: 7px;
 }
 
 .tituloCantina{
@@ -90,8 +89,7 @@ main{
 
 .bordesInputs{
     border: 0.13rem solid #000;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
+    border-radius: 7px;
     padding-left: 0px;
     padding: 0px;
 }
