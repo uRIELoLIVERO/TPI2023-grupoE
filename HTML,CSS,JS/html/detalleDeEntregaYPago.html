@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del pedido</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/detalleDeEntregaYPago.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="global-container">
+
+        <div class="container d-flex flex-column align-items-center">
+
+            <div class="container m-auto pt-3">
+                <div class="progress container-progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated container-progress-object" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="container-detalleEntrega m-auto pt-3 pb-0">
+                    <h3 class="container-detalleEntrega-h3 mb-0">Detalle de Entrega</h3>
+                    <p class="m-0 container-detalleEntrega-p mt-1">Fecha y Hora</p>
+                    <label class="container-detalleEntrega-label">
+                        <input class="container-detalleEntrega-label-input w-100 bg-white pl-3" type="datetime-local" id="Calendario" name="Calendario">
+                    </label>
+                    <p class="m-0 container-detalleEntrega-p mt-2 ">Ubicación de entrega</p>
+                    <select class="control-form container-detalleEntrega-select w-100 bg-white pl-3">
+                        <option>TICS</option>
+                        <option>CICOM</option>
+                    </select>
+                    <div class="form-group">
+                        <p class="m-0 container-detalleEntrega-p mt-2">Notas</p>
+                        <textarea class="form-control container-detalleEntrega-textArea w-100" id="exampleFormControlTextarea1" rows="2"></textarea>
+                      </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="container-detallePago m-auto pt-3">
+                    <h3 class="container-detallePago-h3 mb-0">Detalle de Pago</h3>
+                    <p class="container-detallePago-p pt-2">Método de Pago</p>
+                    <form class="container-detallePago-form">
+                      <select id="tipoCuenta" name="tipoCuenta" class="control-form container-detallePago-form-select w-100 bg-white" onchange="mostrarOcultar()">
+                        <option value="#">Selecione una opción...</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="cuentaCorriente">Cuenta Corriente</option>
+                      </select>
+          
+                      <div id="cvuContainer" class="cvu-container container-detallePago-form-CVU">
+                          <label for="cvu" class="w-100">
+                              <div class="container-detallePago-form-CVU-Entero mx-auto mt-4 row row-cols-1">
+                                <div class="col pt-3">
+                                    <p><b>CVU: 0000007900204210831001</b></p>
+                                </div>  
+                                <div class="col pb-3">
+                                    <p> <b>ALIAS: cantinautn</b></p>
+                                </div>
+                              </div>
+                            
+                          </label>
+                      </div>
+                  
+                        <div id="areasSelect" class="mt-4 container-detallePago-form-Area">
+                            <p class="col w-100 p-0">Area de pago</p>
+                            <select id="areas" name="areas" class="col bg-white control-form container-detallePago-form-select-Area pl-3">
+                                <option value="CICOM">CICOM</option>
+                                <option value="TICS">TICS</option>
+                            </select>
+                        </div>
+                    </form>
+                  </div> 
+            </div>
+            
+            <div class="container container-tuPedido mt-5">
+                <h3 class="container--tuPedido__h3">Tu pedido</h3>
+                <div class="j">
+                    <div class="container-tuPedido-Total row bg-white m-0 m-0">
+                        <div class="col p-0 my-auto">
+                            <p class="pl-4">Total</p>
+                        </div>
+                        <div class="col p-0 text-right my-auto">
+                            <p class="pr-4">$902.66</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-botones d-grid gap-2 w-100 pl-4 pr-4">
+                <button class="container-botones_Continuar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button">Continuar</button>
+                <button class="container-botones_Cancelar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button" >Cancelar</button>
+            </div>
+            
+
+        </div>
+    </div>
+    <!-- Bootstrap JS y dependencias  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function mostrarOcultar() {
+          var tipoCuenta = document.getElementById("tipoCuenta");
+          var cvuContainer = document.getElementById("cvuContainer");
+          var areasSelect = document.getElementById("areasSelect");
+      
+          if (tipoCuenta.value === "transferencia") {
+            cvuContainer.style.display = "block";
+            areasSelect.style.display = "none";
+          } else if (tipoCuenta.value === "cuentaCorriente") {
+            cvuContainer.style.display = "none";
+            areasSelect.style.display = "block";
+          } else {
+            cvuContainer.style.display = "none";
+            areasSelect.style.display = "none";
+          }
+        }
+      </script>
+</body>
+</html>
