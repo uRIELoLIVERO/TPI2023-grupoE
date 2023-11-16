@@ -11,8 +11,13 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='resetPasswordComplete.html'), name='password_reset_complete'),
     path('miCarrito/', views.miCarrito, name='miCarrito'),
     path('detallePago/',views.detallePago, name='detallePago'),
-    path('productos/', consultarProductos, name='consultarProductos'),
+    path('productos/', views.consultarProductos, name='consultarProductos'),
     path('detalledePago/', detalledePago, name='detalledePago'),
     path('detalledeEntrega/', detalledeEntrega, name='detalledeEntrega'),
+    path('verCtaCte/', views.verCtaCte, name='verCtaCte'),
+    path('resetPassword2/', views.resetPassword2, name='resetPassword2'),
+    path('consultarProductos/', views.consultarPedido, name='consultarPedido'),
+    path('revisionPedido/', views.revisionPedido, name='revisionPedido'),
+    path('detallePagoFinal/', views.detallePagoFinal, name='detallePagoFinal')
 ]
 

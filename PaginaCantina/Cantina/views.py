@@ -102,6 +102,19 @@ def consultarProductos(request):
         'form': TuFormularioDeFiltro(),
         'detalle_form': DetallePedidoForm(),
     }
-
     return render(request, 'consultarProductos.html', context)
 
+def verCtaCte(request):
+    return render(request, 'verCtaCte.html')
+
+def resetPassword2(request):
+    return render(request, 'resetPassword2.html')
+
+def consultarPedido(request):
+    return render(request, 'consultarPedido.html')
+
+def revisionPedido(request):
+    return render(request, 'revisionPedido.html')
+
+def detallePagoFinal(request):
+    return render(request, 'detallePagoFinal.html')
