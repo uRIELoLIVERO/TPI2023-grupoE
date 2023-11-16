@@ -28,10 +28,10 @@
           <a class="nav-link" href="{% url 'productosCarrito' %}">Mi Carrito</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mi Cta. Cte.</a>
+          <a class="nav-link" href="{% url 'verCtaCte' %}">Mi Cta. Cte.</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Pedidos</a>
+          <a class="nav-link disabled" aria-disabled="true" href="{% url 'consultarPedido' %}">Pedidos</a>
         </li>
       </ul>
 
@@ -64,12 +64,12 @@
                 </li>
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/wallet.png' %} " alt="" height="30px"></span><a class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi Cta.Cte</a>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/wallet.png' %} " alt="" height="30px"></span><a href="{% url 'verCtaCte' %}" class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi Cta.Cte</a>
                   </div>
                 </li>
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-bag.png' %} " alt="" height="30px"></span><a class="h5 mt-0 mb-0 titulos-principal fecha-request">Pedidos</a>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-bag.png' %} " alt="" height="30px"></span><a href="{% url 'consultarPedido' %}" class="h5 mt-0 mb-0 titulos-principal fecha-request">Pedidos</a>
                   </div>
                 </li>
               </ul>
