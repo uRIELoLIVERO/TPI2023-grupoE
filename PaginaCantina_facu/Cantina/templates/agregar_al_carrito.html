@@ -1,0 +1,166 @@
+<!-- template_carrito.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load static %}
+  <div class="container pe-5 ps-5 main-container">
+    <div class="secondary-container" id="product-list-container">
+      <div class="title">
+        <h1>Productos en el Carrito</h1>
+      </div>
+
+      <section class="container">
+        <div class="cards-container">
+          {% for producto in productos_en_carrito %}
+          <div class="product-card">
+            <div class="product-info">
+              <p class="product-name">{{ producto.nombre }}</p>
+              <p class="product-price">${{ producto.precioUnitario }}</p>
+              <!-- Inicialmente, el subtotal se muestra utilizando el precio unitario -->
+              <p class="product-subtotal">Subtotal: $<span class="subtotal">{{ producto.precioUnitario }}</span></p>
+            </div>
+            <div class="product-container-img">
+              <picture>
+                <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="product-img">
+              </picture>
+            </div>
+            
+            <!-- Agrega la etiqueta input para la cantidad con el atributo max -->
+            <input type="number" name="cantidad" value="{{ producto.cantidad }}" min="1" max="{{ producto.stock }}">
+            <button class="add-to-cart-btn" data-product-id="{{ producto.id }}">
+              <img src="{% static 'images/less.png' %}" alt="" class="product-cart">
+            </button>
+          </div>
+        {% endfor %}
+        <div class="total-carrito">
+          <p>Total del Carrito: $<span id="total-carrito">0.00</span></p>
+        </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.add-to-cart-btn').click(function () {
+          const productId = $(this).data('product-id');
+          
+          // Realizar una solicitud AJAX para actualizar el valor 'carrito' en la base de datos
+          $.ajax({
+              type: 'GET',
+              url: `/quitarProducto/${productId}/`,
+              success: function (response) {
+                  if (response.success) {
+                      // Éxito: Puedes agregar lógica adicional aquí si es necesario
+                      window.location.href = '/productosCarrito';
+                      console.log('Carrito actualizado correctamente.');
+                      
+                  } else {
+                      // Manejar el error, por ejemplo, mostrar un mensaje al usuario
+                      console.error('Error al actualizar el carrito:', response.error);
+                  }
+              },
+              error: function (error) {
+                  // Manejar errores de AJAX
+                  console.error('Error en la solicitud AJAX:', error);
+              }
+          });
+      });
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    $('input[name="cantidad"]').change(function () {
+      const cantidadInput = $(this);
+      const cantidad = parseInt(cantidadInput.val());
+      const precioUnitarioElement = cantidadInput.closest('.product-card').find('.product-price');
+      const subtotalElement = cantidadInput.closest('.product-card').find('.subtotal');
+
+      // Obtener el precio unitario del elemento y validar que sea un número válido
+      const precioUnitarioText = precioUnitarioElement.text().replace('$', '').trim();
+      const precioUnitario = parseFloat(precioUnitarioText);
+      
+      if (!isNaN(cantidad) && cantidad >= 1 && !isNaN(precioUnitario)) {
+        const nuevoSubtotal = cantidad * precioUnitario;
+        subtotalElement.text('$' + nuevoSubtotal.toFixed(2));
+
+        // Aquí puedes realizar una solicitud AJAX para actualizar el subtotal en el backend si es necesario
+      } else {
+        // Manejar el caso en que la cantidad o el precio no sean válidos
+        alert('La cantidad ingresada o el precio no son válidos.');
+        // Puedes ajustar este manejo de error según tus necesidades
+
+        // Restaurar la cantidad original en el campo de entrada
+        cantidadInput.val(cantidadInput.data('original-quantity'));
+        // Restaurar el subtotal al precio unitario
+        subtotalElement.text('$' + precioUnitario.toFixed(2));
+      }
+    });
+
+    $('input[name="cantidad"]').each(function () {
+      const cantidadInput = $(this);
+      cantidadInput.data('original-quantity', cantidadInput.val());
+    });
+  });
+</script>
+<script>
+  $(document).ready(function () {
+      // Función para recalcular el total del carrito
+      function recalcularTotalCarrito() {
+          var totalCarrito = 0;
+
+          // Iterar sobre cada producto en el carrito
+          $('.product-card').each(function () {
+              var cantidad = parseFloat($(this).find('input[name="cantidad"]').val());
+              var precioUnitario = parseFloat($(this).find('.product-price').text().replace('$', ''));
+
+              // Calcular el subtotal y sumarlo al total del carrito
+              var subtotal = cantidad * precioUnitario;
+              totalCarrito += isNaN(subtotal) ? 0 : subtotal;
+          });
+
+          // Actualizar el contenido del elemento HTML con el nuevo total
+          $('#total-carrito').text(totalCarrito.toFixed(2));
+      }
+
+      // Llamar a la función inicialmente para establecer el total
+      recalcularTotalCarrito();
+
+      // Manejar cambios en la cantidad para actualizar dinámicamente el total
+      $(document).on('change', 'input[name="cantidad"]', function () {
+          recalcularTotalCarrito();
+      });
+
+      // Resto del script existente
+      $('.add-to-cart-btn').click(function () {
+          const productId = $(this).data('product-id');
+
+          // Realizar una solicitud AJAX para actualizar el valor 'carrito' en la base de datos
+          $.ajax({
+              type: 'GET',
+              url: `/quitarProducto/${productId}/`,
+              success: function (response) {
+                  if (response.success) {
+                      // Éxito: Puedes agregar lógica adicional aquí si es necesario
+                      recalcularTotalCarrito();
+                      window.location.href = '/productosCarrito';
+                      console.log('Carrito actualizado correctamente.');
+                  } else {
+                      // Manejar el error, por ejemplo, mostrar un mensaje al usuario
+                      console.error('Error al actualizar el carrito:', response.error);
+                  }
+              },
+              error: function (error) {
+                  // Manejar errores de AJAX
+                  console.error('Error en la solicitud AJAX:', error);
+              }
+          });
+      });
+
+      // Ejemplo de uso:
+      // Después de agregar/quitar productos o en cualquier otro lugar donde se actualicen subtotales, llama a:
+      // recalcularTotalCarrito();
+  });
+</script>
+{% endblock %}

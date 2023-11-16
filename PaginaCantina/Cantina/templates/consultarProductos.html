@@ -16,13 +16,14 @@
             <input class="form-control me-2 input-interno" type="search" placeholder="Buscar Producto" aria-label="Search">
           </div>
           <div class="form-control filter" id="filter-options">
-            <a href="#">
+            <a href="#" id="toggle-filter">
                 <img src="{% static 'images/setting.png' %}" alt="" class="logo logo-filter">
             </a>
           </div>
+
         </div>
         <div id="filter-form" class="inactive container-filter">
-          <form method="get" action="{% url 'consultarProductos' %}">
+          <form method="get" action="{% url 'consultarProductos' %}" id="filter-form">
             {{ form.as_p }}
             <button type="submit">Filtrar</button>
           </form>
@@ -52,7 +53,9 @@
                     <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="product-img">
                   </picture>
                   <div class="product-container-cart">
-                    <a href=""><img src="{% static 'images/shopping-cart-add.png' %}" alt="" class="product-cart"></a>
+                    <button class="add-to-cart-btn" data-product-id="{{ producto.id }}">
+                        <img src="{% static 'images/shopping-cart-add.png' %}" alt="" class="product-cart">
+                    </button>
                   </div>
                 </div>
               </div>
@@ -66,4 +69,6 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="{% static 'js/findProducto.js' %} " defer></script>
   <script src="{% static 'js/filterProductos.js' %} " defer></script>
+  <script src="{% static 'js/tomarIDProductos.js' %} " defer></script>
+
 {% endblock %}
