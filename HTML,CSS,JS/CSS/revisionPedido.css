@@ -1,0 +1,98 @@
+:root {
+    --hunyadiYellow: #EDAE49;
+    --onyx: #313638;
+    --Alabaster: #E8E9EB;
+    --antiFlashWhite: #EEEEEE ;
+    --platinum: #D9D9D9;
+    --Battleship-gray: #8F8F8F;
+    --sandyBrown: #F19953;
+    --cafeNoir: #56351E;
+    --asparagus: #6A9F56;
+    --celadon: #ACD8AA;
+    --vermilion: #E93835;
+    --blush: #E0677F;
+    --lapisLazulli: #2660A4;
+    --sm: .8em;
+    --md: 1.2em;
+    --lg: 1.6em;
+}
+
+.container-main-revision{
+    height: 100vh;
+    background: var(--Alabaster);
+}
+.progress-bar{
+    width: 80%; 
+    height: 20px; 
+    background-color:var(--onyx); 
+    border-radius: 25px;
+    border: 2px solid var(--onyx);
+}
+.progress-bar-color{
+    width: 100%;
+    height: auto; 
+    background-color: var(--celadon); 
+    border-radius: 25px
+}
+.megaTitle-revision{
+    color: #F09042; 
+    font-size: var(--lg); 
+    font-weight: 700; 
+    padding-top: 0%; 
+    margin-top: 35px;
+    margin-left: 10vw;
+}
+.container-detalle-revision{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.container-content-revision{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.detalle-revision{
+    padding: 16px;
+    width: 80vw;
+    background-color: white;
+    border: 1px solid var(--onyx);
+    margin-bottom: 12px ;
+}
+.text-revision{
+    font-size: var(--md);
+    font-weight: 500;
+}
+.title-revision{
+    color: var(--onyx);
+}
+.detalle-subtitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.subtitle-revision{
+    color: var(--Battleship-gray);
+}
+.btn-revisionPedido{
+    color: #FFF; 
+    background-color: var(--vermilion); 
+    font-size: 14px; 
+    font-style: normal; 
+    font-weight: 500; 
+    line-height: normal; 
+    width: 80vw; 
+    border-radius: 30px;
+    margin-bottom: 16px;
+    border: 1px solid var(--onyx);
+}
+.btn-finalizar{
+    background-color: var(--lapisLazulli)!important;    
+}
+.container-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/revisionPedido.css">
+  <title>Revision de pedido</title>
+</head>
+<body>
+  <div class="container-main-revision global-conteiner">
+      <div class="container pt-3">
+          <div class="container-revision progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated
+              progress-bar-color" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+      </div>
+      <h3 class="megaTitle-revision">Revision de tu pedido</h3>
+      <div class="container-detalle-revision m-auto pt-3">
+        <div class="container-content-revision">
+            <div class="detalle-revision">
+                  <p class="text-revision title-revision">Tu pedido</p>
+                  <div class="detalle-subtitle">
+                      <p class="text-revision subtitle-revision">8 Items</p> 
+                      <p class="text-revision subtitle-revision">$902.66</p> 
+                  </div>
+            </div>
+      
+            <div class="detalle-revision">
+                  <p class="text-revision title-revision">Area de entrega</p>
+                  <p class="text-revision subtitle-revision">Coworking</p> 
+            </div>
+      
+            <div class="detalle-revision">
+                  <p class="text-revision title-revision">Metodo de pago</p>
+                  <p class="text-revision subtitle-revision">Cuenta Corriente</p> 
+            </div>
+        </div>
+
+        <div class="container-buttons">
+            <a href="{% url 'detallePagoFinal' %}" class="btn btn-revisionPedido btn-finalizar" type="submit">Finalizar</a>
+            <a href="{% url 'consultarProductos' %}" class="btn btn-revisionPedido" type="submit">Cancelar</a>
+        </div>
+
+      </div>
+  </div>
+   <!-- Bootstrap JS y dependencias  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
