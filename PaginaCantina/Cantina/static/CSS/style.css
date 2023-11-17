@@ -1,3 +1,11 @@
+html{
+    font-size: 67.25%;
+}
+
+*{
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
 :root {
     --hunyadiYellow: #EDAE49;
     --onyx: #313638;
@@ -14,9 +22,6 @@
     --sm: .8em;
     --md: 1.2em;
     --lg: 1.6em;
-}
-*{
-    font-family: "poppins", Arial, Helvetica, sans-serif;
 }
 .inactive{
     display: none !important;
