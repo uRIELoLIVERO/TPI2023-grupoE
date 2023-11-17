@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del pedido</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/CSS/detalleDeEntregaYPago.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
     <div class="global-container">
 
         <div class="container d-flex flex-column align-items-center">
@@ -64,8 +56,9 @@
                         <div id="areasSelect" class="mt-4 container-detallePago-form-Area">
                             <p class="col w-100 p-0">Area de pago</p>
                             <select id="areas" name="areas" class="col bg-white control-form container-detallePago-form-select-Area pl-3">
-                                <option value="CICOM">Mi cuenta corriente</option>
                                 <option value="TICS">TICS</option>
+                                <option value="CICOM">CICOM</option>
+
                             </select>
                         </div>
                     </form>
@@ -82,20 +75,19 @@
                         <div class="col p-0 text-right my-auto">
                             <p class="pr-4" id="totalPlaceholder"></p>
                         </div>
-                    </div>
-                    
-                    
-                </div>
+                    </div>     
+                  </div>
             </div>
 
             <div class="container-botones d-grid gap-2 w-100 pl-4 pr-4">
-                <button class="container-botones_Continuar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button">Continuar</button>
-                <button class="container-botones_Cancelar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button" >Cancelar</button>
+                <a href="{% url 'revisionPedido' %}" class="container-botones_Continuar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button">Continuar</a>
+                <a href="{% url 'miCarrito' %}" class="container-botones_Cancelar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button" >Cancelar</a>
             </div>
             
 
         </div>
     </div>
+
     <!-- Bootstrap JS y dependencias  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -161,6 +153,4 @@
         });
     });
 </script>
-
-</body>
-</html>
+{% endblock %}

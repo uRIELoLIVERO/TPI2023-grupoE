@@ -1,3 +1,11 @@
+html{
+    font-size: 67.25%;
+}
+
+*{
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
 :root {
     --hunyadiYellow: #EDAE49;
     --onyx: #313638;
@@ -14,9 +22,6 @@
     --sm: .8em;
     --md: 1.2em;
     --lg: 1.6em;
-}
-*{
-    font-family: "poppins", Arial, Helvetica, sans-serif;
 }
 .inactive{
     display: none !important;
@@ -49,6 +54,7 @@
     z-index: 1;
 }
 .navbar{
+    z-index: 1030;
     display: flex !important;
     align-content: space-between !important;
     align-items: center;
@@ -83,4 +89,14 @@
 }
 #burgerMenu{
     display:  fixed;
+}
+@media (min-width: 1024px){
+    #desktopMenu{
+        display: flex;
+        flex-direction: row;
+    }
+    #desktopMenu li a{
+        font-size: var(--md);
+        color: white;
+    }
 }

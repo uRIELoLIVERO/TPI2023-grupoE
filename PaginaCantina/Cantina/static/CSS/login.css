@@ -2,10 +2,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html, body{
-    height: 100%;
-}
-
 body{
     background-image: url("../images/imagen_utn.png");
     width: 100%;

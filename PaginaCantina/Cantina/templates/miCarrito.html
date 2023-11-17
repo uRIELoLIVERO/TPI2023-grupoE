@@ -1,3 +1,69 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 77e783588e7be3593077578aecb8f02523bbf079
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+    <div class="container-miCarrito d-flex align-items-start">
+        <div class="container d-flex align-items-center">
+            <main class="m-auto container-carrito">
+                <div class="container p-0">
+                    <div class="row align-items-center">
+                        <div class="col d-inline-flex">
+                            <a href="{% url 'consultarProductos' %}" class="me-2 align-middle d-flex align-items-center"><img class="" src="{% static 'images/return 1.svg' %}" alt="" height="18px"></a><p class="h5 mt-0 mb-0 titulos-principal">Mi carrito</p>
+                        </div>
+                        <div class="col text-end">
+                            <p class="h5 m-0 titulos-principal">{{ total_items }} items</p>
+                        </div>
+                    </div>
+                    <hr class="border-black m-1 mb-3">
+                </div>
+<<<<<<< HEAD
+                
+=======
+>>>>>>> 77e783588e7be3593077578aecb8f02523bbf079
+                <div class="card">
+                    {% for item in productos_en_carrito %}
+                        <div class="row fila-objeto">
+                            <div class="ps-3 pe-0 col-3 columna-imagen align-self-center">
+                                <img class="img-fluid mx-auto d-block" src="{{ item.producto.imagenURL }}" alt="">
+                            </div>
+                            <div class="col-9 mt-2 mb-2 columna-detalles align-self-center">
+                                <div class="row align-items-center fila-detalles">
+                                    <div class="col columna-nombre">
+                                        <p class="m-0 fontSize-card text-center">{{ item.producto.nombre }}</p>
+                                    </div>
+                                    <!-- ... (resto del contenido) ... -->
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="container-totalMasIrAPagar">
+                    <div class="total-a-pagar mt-4 row d-flex align-items-center m-0 rounded-4">
+                        <div class="col">
+                            <p class="mb-0">Total</p>
+                        </div>
+                        <div class="col text-end">
+                            <p class="mb-0 precio-total">${{ total_precio }}</p>
+                        </div>
+                    </div>
+                    <div class="d-grid mx-auto mt-3 container-irAPagar">
+                        <a href="{% url 'detalleDeEntregaYPago' %}" class="btn btn-primary border-dark text-light rounded-4 pt-1 pb-1 bg-button">Ir a pagar</a>
+                    </div>
+<<<<<<< HEAD
+=======
+                  </div>
+>>>>>>> 77e783588e7be3593077578aecb8f02523bbf079
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+<<<<<<< HEAD
+=======
 <!-- template_carrito.html -->
 {% load static %}
 <!DOCTYPE html>
@@ -99,3 +165,6 @@
        
     </body>
 </html>
+>>>>>>> main
+=======
+>>>>>>> 77e783588e7be3593077578aecb8f02523bbf079
