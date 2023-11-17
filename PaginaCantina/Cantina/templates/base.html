@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="{% static 'CSS/detalleDePagoFinal.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/detalleDeEntregaYPago.css' %}">
     <link rel="stylesheet" href="{% static 'CSS/miCarrito.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/laptop.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/resetPassword.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/resetPassword2.css' %}">
+
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #edae49; padding: 0 16px">
@@ -30,7 +34,7 @@
           <a class="nav-link active" aria-current="page" href="{% url 'consultarProductos' %}">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'miCarrito' %}">Mi Carrito</a>
+          <a class="nav-link" href="{% url 'productosCarrito' %}">Mi Carrito</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'verCtaCte' %}">Mi Cta. Cte.</a>
