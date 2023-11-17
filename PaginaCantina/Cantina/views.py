@@ -6,6 +6,8 @@ from django.contrib import messages
 from .forms import ClienteForm, UserCreationFormExtended, TuFormularioDeFiltro, DetallePedidoForm
 from .models import *
 from django.views import View
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 def mysite(request):
     # Lógica de negocio aquí
@@ -105,3 +107,35 @@ def consultarProductos(request):
 
     return render(request, 'consultarProductos.html', context)
 
+def productos_en_carrito(request):
+    productos_en_carrito = Producto.objects.filter(carrito=1)
+    return render(request, 'agregar_al_carrito.html', {'productos_en_carrito': productos_en_carrito})
+
+def actualizar_carrito(request, product_id):
+    producto = get_object_or_404(Producto, id=product_id)
+    producto.carrito = 1
+    producto.save()  # Actualiza el valor de 'carrito' a 1
+    return JsonResponse({'success': True})
+
+def quitarProducto(request, product_id):
+    # Utiliza el decorador @require_POST para permitir solo solicitudes POST
+    producto = get_object_or_404(Producto, id=product_id)
+    producto.carrito = 0
+    producto.save()
+    return JsonResponse({'success': True})
+
+def actualizar_subtotal(request):
+    if request.method == 'POST':
+        producto_id = request.POST.get('productoId')
+        nuevo_subtotal = request.POST.get('nuevoSubtotal')
+
+        try:
+            carrito_item = Carrito.objects.get(id=producto_id)
+            carrito_item.cantidad = nuevo_subtotal
+            carrito_item.save()
+
+            return JsonResponse({'nuevo_subtotal': nuevo_subtotal})
+        except Carrito.DoesNotExist:
+            return JsonResponse({'error': 'Producto no encontrado en el carrito'})
+    else:
+        return JsonResponse({'error': 'Método no permitido'})

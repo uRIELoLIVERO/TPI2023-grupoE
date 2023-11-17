@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 class Area(models.Model):
     nombre = models.CharField(max_length=100)
     ubicacion = models.CharField(max_length=100)
@@ -23,6 +23,10 @@ class Producto(models.Model):
     stock = models.IntegerField()
     imagen = models.ImageField()
     estado = models.BooleanField()
+    carrito = models.IntegerField(default=0)
+    cantidad = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(stock)])
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
     
     @property
     def imagenURL(self):
@@ -32,9 +36,16 @@ class Producto(models.Model):
             url = ''
         return url
 
+    @property
+    def total_carrito(self):
+        carrito = self.detallepedido_set.filter(pedido__estado='pendiente')
+        total = sum(item.subtotal for item in carrito)
+        return total
+
 class DetallePedido(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
 
 class Pedido(models.Model):
     estado_choices = [
