@@ -25,6 +25,6 @@ urlpatterns = [
     path('resetPassword2/', views.resetPassword2, name='resetPassword2'),
     path('consultarProductos/', views.consultarPedido, name='consultarPedido'),
     path('revisionPedido/', views.revisionPedido, name='revisionPedido'),
-    path('detallePagoFinal/', views.detallePagoFinal, name='detallePagoFinal')
+    path('detallePagoFinal/', views.detallePagoFinal, name='detallePagoFinal')    
 ]
 
