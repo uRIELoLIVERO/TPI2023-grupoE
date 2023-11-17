@@ -1,0 +1,42 @@
+:root {
+    --hunyadiYellow: #EDAE49;
+    --onyx: #313638;
+    --Alabaster: #E8E9EB;
+    --antiFlashWhite: #EEEEEE ;
+    --platinum: #D9D9D9;
+    --sandyBrown: #F19953;
+    --cafeNoir: #56351E;
+    --asparagus: #6A9F56;
+    --celadon: #ACD8AA;
+    --vermilion: #E93835;
+    --blush: #E0677F;
+    --lapisLazulli: #2660A4;
+    --sm: .8em;
+    --md: 1.2em;
+    --lg: 1.6em;
+}
+
+.container-success{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.container-success p{
+    font-weight: bold;
+    font-size: var(--lg);
+}
+.container-success-button a{
+    border: 1px solid var(--onyx);
+    background-color: white;
+    color: var(--lapisLazulli);
+    font-size: var(--md);
+}
+.container-success-button a:first-child{
+    background-color: var(--lapisLazulli);
+    color: white;
+}
+@media (min-width: 1024px) {
+    .container-success-button a{
+        font-size: var(--lg);
+    }
+}

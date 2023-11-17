@@ -181,17 +181,3 @@ p{
     background: var(--vermilion);
     border-style: outset;
 }
-
-@media (min-width: 1024px){
-    .container-botones{
-        display: flex;
-    }
-    
-    .container-botones_Continuar{
-        margin-right: 1rem;
-    }
-    
-    .container-botones_Cancelar{
-        margin-left: 1rem;
-    }
-}

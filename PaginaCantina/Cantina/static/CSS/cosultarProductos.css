@@ -30,7 +30,7 @@ p{
 .fondoParcheado{
     background: var(--Alabaster);
 }
-div.main-container{
+.main-container{
     padding-top: 75px;
     height: 100%;
     width: auto;

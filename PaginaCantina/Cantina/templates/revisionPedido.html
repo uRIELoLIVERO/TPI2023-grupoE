@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/revisionPedido.css">
-  <title>Revision de pedido</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
   <div class="container-main-revision global-conteiner">
       <div class="container pt-3">
           <div class="container-revision progress">
@@ -40,14 +33,9 @@
 
         <div class="container-buttons">
             <a href="{% url 'detallePagoFinal' %}" class="btn btn-revisionPedido btn-finalizar" type="submit">Finalizar</a>
-            <a href="{% url 'consultarProductos' %}" class="btn btn-revisionPedido" type="submit">Cancelar</a>
+            <a href="{% url 'detalleDeEntregaYPago' %}" class="btn btn-revisionPedido" type="submit">Volver</a>
         </div>
 
       </div>
   </div>
-   <!-- Bootstrap JS y dependencias  -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock %}
