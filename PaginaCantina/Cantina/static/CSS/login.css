@@ -47,6 +47,12 @@ main{
     --lg: 1.6em;
 }
 
+#id_username, #id_password{
+    border: none;
+    outline: none;
+    background-color: var(--Alabaster);
+}
+
 .navbarColor{
     background-color: var(--hunyadiYellow);
     width: 100%;

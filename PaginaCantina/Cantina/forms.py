@@ -33,11 +33,11 @@ class ClienteForm(forms.ModelForm):
             'cuentaCorriente': NumberInput(attrs={'class': 'form-control'}),
             'fechaNacimiento': DateInput(attrs={'class': 'form-control'}),
             'area': Select(attrs={'class': 'form-control'}),
+            'user_username': forms.TextInput(attrs={'class': 'form-control bg-danger'}),
+            'user_password': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-        # Nuevos campos para el usuario
-        user_username = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}))
-        user_password = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
+
  
 
 class ProductoForm(forms.ModelForm):
@@ -90,7 +90,7 @@ class AdminProfileForm(forms.ModelForm):
 class UserCreationFormExtended(UserCreationForm):
     class Meta:
         model = User
-        fields = UserCreationForm.Meta.fields + ('email',)  # Agrega el campo de correo electrónico
+        fields = UserCreationForm.Meta.fields + ('email','password')  # Agrega el campo de correo electrónico
 
 class CuentaCorrienteForm(forms.ModelForm):
     class Meta:
