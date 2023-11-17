@@ -31,7 +31,9 @@ main{
 hr{
     opacity: 1;
 }
-
+.container-carrito{
+    padding-top: 75px;
+}
 .boton-eliminar{
     font-size: 12px;
     height: 20px;

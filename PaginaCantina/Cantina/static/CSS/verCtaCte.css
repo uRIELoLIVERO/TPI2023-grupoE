@@ -19,13 +19,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html, body{
-    height: 100%;
+.container-verCtaCte{
+    padding-top: 75px;
+    height: 100vh;
     background-color: var(--antiFlashWhite) !important;
 }
 
 .container-balance{
-    background-color: var(--cafeNoir); /* este color cambia según la cantidad de plata debiendo */
+    background-color: var(--vermilion); /* este color cambia según la cantidad de plata debiendo */
 }
 
 .container-balance-wallet{
@@ -63,11 +64,11 @@ html, body{
 
 
 @media (min-width: 1000px){
-    body, html{
+    .container-verCtaCte{
         background-color: #CCCCCC !important;
     }
 
-    main{
+    .containerMain-verCtaCte{
         width: 80% !important;
         height: auto;
         padding: 12px;

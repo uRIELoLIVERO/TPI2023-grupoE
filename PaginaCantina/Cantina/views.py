@@ -59,8 +59,8 @@ def miCarrito(request):
     return render(request, 'miCarrito.html', context)
 
 
-def detallePago(request):
-    return render(request, 'detallePago.html')
+def detalleDeEntregaYPago(request):
+    return render(request, 'detalleDeEntregaYPago.html')
 
 def consultarProductos(request):
     productos_disponibles = Producto.objects.filter(estado=True)

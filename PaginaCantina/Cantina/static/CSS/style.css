@@ -49,6 +49,7 @@
     z-index: 1;
 }
 .navbar{
+    z-index: 1030;
     display: flex !important;
     align-content: space-between !important;
     align-items: center;
@@ -83,4 +84,14 @@
 }
 #burgerMenu{
     display:  fixed;
+}
+@media (min-width: 1024px){
+    #desktopMenu{
+        display: flex;
+        flex-direction: row;
+    }
+    #desktopMenu li a{
+        font-size: var(--md);
+        color: white;
+    }
 }
