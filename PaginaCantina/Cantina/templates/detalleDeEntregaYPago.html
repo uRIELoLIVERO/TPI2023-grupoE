@@ -18,15 +18,13 @@
                     <label class="container-detalleEntrega-label">
                         <input class="container-detalleEntrega-label-input w-100 bg-white pl-3" type="datetime-local" id="Calendario" name="Calendario">
                     </label>
-                    <p class="m-0 container-detalleEntrega-p mt-2 ">Ubicación de entrega</p>
-                    <select class="control-form container-detalleEntrega-select w-100 bg-white pl-3">
-                        <option>TICS</option>
-                        <option>CICOM</option>
+                    <p class="m-0 container-detalleEntrega-p mt-2">Ubicación de entrega</p>
+                    <select id="ubicacionEntrega" class="control-form container-detalleEntrega-select w-100 bg-white pl-3">
                     </select>
                     <div class="form-group">
                         <p class="m-0 container-detalleEntrega-p mt-2">Notas</p>
                         <textarea class="form-control container-detalleEntrega-textArea w-100" id="exampleFormControlTextarea1" rows="2"></textarea>
-                      </div>
+                    </div>
                 </div>
             </div>
 
@@ -58,8 +56,9 @@
                         <div id="areasSelect" class="mt-4 container-detallePago-form-Area">
                             <p class="col w-100 p-0">Area de pago</p>
                             <select id="areas" name="areas" class="col bg-white control-form container-detallePago-form-select-Area pl-3">
-                                <option value="CICOM">CICOM</option>
                                 <option value="TICS">TICS</option>
+                                <option value="CICOM">CICOM</option>
+
                             </select>
                         </div>
                     </form>
@@ -69,15 +68,15 @@
             <div class="container container-tuPedido mt-5">
                 <h3 class="container--tuPedido__h3">Tu pedido</h3>
                 <div class="j">
-                    <div class="container-tuPedido-Total row bg-white m-0 m-0">
+                    <div id="totalContainer" class="container-tuPedido-Total row bg-white m-0 m-0">
                         <div class="col p-0 my-auto">
-                            <p class="ps-4">Total</p>
+                            <p class="pl-4">Total</p>
                         </div>
-                        <div class="col p-0 text-end my-auto">
-                            <p class="pe-4">$902.66</p>
+                        <div class="col p-0 text-right my-auto">
+                            <p class="pr-4" id="totalPlaceholder"></p>
                         </div>
-                    </div>
-                </div>
+                    </div>     
+                  </div>
             </div>
 
             <div class="container-botones d-grid gap-2 w-100 pl-4 pr-4">
@@ -88,4 +87,70 @@
 
         </div>
     </div>
+
+    <!-- Bootstrap JS y dependencias  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function mostrarOcultar() {
+          var tipoCuenta = document.getElementById("tipoCuenta");
+          var cvuContainer = document.getElementById("cvuContainer");
+          var areasSelect = document.getElementById("areasSelect");
+      
+          if (tipoCuenta.value === "transferencia") {
+            cvuContainer.style.display = "block";
+            areasSelect.style.display = "none";
+          } else if (tipoCuenta.value === "cuentaCorriente") {
+            cvuContainer.style.display = "none";
+            areasSelect.style.display = "block";
+          } else {
+            cvuContainer.style.display = "none";
+            areasSelect.style.display = "none";
+          }
+        }
+      </script>
+      <script>
+        // Espera a que el documento esté completamente cargado
+        $(document).ready(function() {
+            // Hacer una solicitud al servidor para obtener las áreas
+            $.ajax({
+                url: '/obtener_areas/', // Reemplaza con la URL correcta de tu aplicación
+                type: 'GET',
+                success: function(data) {
+                    // Llenar el elemento select con las opciones de las áreas
+                    let ubicacionEntregaSelect = $('#ubicacionEntrega');
+                    data.areas.forEach(function (area) {
+                        let option = $('<option>', { value: area, text: area });
+                        ubicacionEntregaSelect.append(option);
+                    });
+                },
+                error: function(error) {
+                    console.log('Error al obtener las áreas:', error);
+                }
+            });
+        });
+    </script>
+<!-- Actualiza el script AJAX para obtener el total -->
+<script>
+    $(document).ready(function() {
+        // Hacer una solicitud al servidor para obtener el total
+        $.ajax({
+            url: '/calcular_total/', // Reemplaza con la URL correcta de tu aplicación
+            type: 'GET',
+            success: function(data) {
+                // Verifica si se recibió un total válido
+                if ('total' in data) {
+                    // Actualizar el contenido del totalPlaceholder con el nuevo total
+                    $('#totalPlaceholder').text(data.total);
+                } else {
+                    console.log('Respuesta inesperada del servidor:', data);
+                }
+            },
+            error: function(error) {
+                console.log('Error al obtener el total:', error);
+            }
+        });
+    });
+</script>
 {% endblock %}
