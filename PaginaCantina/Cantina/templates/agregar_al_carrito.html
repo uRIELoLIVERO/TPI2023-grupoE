@@ -18,7 +18,6 @@
 
             {% for producto in productos_en_carrito %}
             <div class="card">
-              {% for producto in productos_en_carrito %}
               <div class="row fila-objeto" data-product-id="{{ producto.id }}">
                 <div class="ps-3 pe-0 col-3 columna-imagen align-self-center">
                   <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="mx-auto d-block" height="57px">
