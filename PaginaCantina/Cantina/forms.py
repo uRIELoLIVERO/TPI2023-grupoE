@@ -43,7 +43,7 @@ class ClienteForm(forms.ModelForm):
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre', 'descripcion', 'precioUnitario', 'stock', 'imagen', 'estado']
+        fields = ['nombre', 'descripcion', 'precioUnitario', 'stock', 'imagen', 'estado', 'carrito', 'cantidad']
         widgets = {
             'nombre': TextInput(attrs={'class': 'form-control'}),
             'descripcion': TextInput(attrs={'class': 'form-control'}),
@@ -51,24 +51,18 @@ class ProductoForm(forms.ModelForm):
             'stock': NumberInput(attrs={'class': 'form-control'}),
             'imagen': FileInput(attrs={'class': 'form-control'}),  
             'estado': CheckboxInput(attrs={'class': 'form-check-input'}),
+            'carrito': NumberInput(attrs={'class': 'form-control'}),
+            'cantidad': NumberInput(attrs={'class': 'form-control'}),
         }
 
 
 class DetallePedidoForm(forms.ModelForm):
     class Meta:
         model = DetallePedido
-        fields = ['producto', 'cantidad']
+        fields = ['producto', 'cantidad',]
         widgets = {
-            'producto': Select(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'cantidad': NumberInput(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
+            'producto': Select(attrs={'class': 'form-control'}),
+            'cantidad': NumberInput(attrs={'class': 'form-control'}),
         }
 
 class PedidoForm(forms.ModelForm):
