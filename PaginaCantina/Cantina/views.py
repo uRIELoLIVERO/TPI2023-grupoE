@@ -8,6 +8,7 @@ from .models import *
 from django.views import View
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+import json
 
 def mysite(request):
     # Lógica de negocio aquí
@@ -139,6 +140,30 @@ def actualizar_subtotal(request):
             return JsonResponse({'error': 'Producto no encontrado en el carrito'})
     else:
         return JsonResponse({'error': 'Método no permitido'})
+
+def guardar_datos(request):
+    if request.method == 'POST':
+        data = json.loads(request.POST.get('productos'))
+
+        for item in data:
+            try:
+                producto = Producto.objects.get(id=item['id'])
+
+                # Actualiza los campos del objeto existente
+                producto.cantidad = item['cantidad']
+                producto.subtotal = item['subtotal']
+
+                producto.save()
+
+            except Producto.DoesNotExist:
+                # Manejar el caso donde el producto no existe en la base de datos
+                pass
+
+        return JsonResponse({'mensaje': 'Datos actualizados con éxito'})
+    else:
+        # Manejar el caso donde la solicitud no es POST
+        pass
+
 
 def verCtaCte(request):
     return render(request, 'verCtaCte.html')
