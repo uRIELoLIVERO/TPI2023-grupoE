@@ -3,9 +3,9 @@ p{
 }
 .fondoParcheado{
     background: var(--Alabaster);
+    padding-top: 55px !important;
 }
 .main-container{
-    padding-top: 75px;
     height: 100%;
     width: auto;
     background-color: var(--Alabaster);

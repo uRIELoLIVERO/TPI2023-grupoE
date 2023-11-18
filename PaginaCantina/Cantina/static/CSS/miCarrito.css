@@ -3,10 +3,6 @@
     background-color: var(--Alabaster);
 }
 
-.container-carrito{
-    height: 300px;
-}
-
 hr{
     opacity: 1;
 }
@@ -70,6 +66,7 @@ hr{
     }
 
     .container-carrito{
+        height: auto;
         width: 75%;
         padding: 40px;
         background-color: var(--antiFlashWhite);
