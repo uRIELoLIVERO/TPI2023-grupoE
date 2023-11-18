@@ -93,7 +93,7 @@ p{
     border-radius: 20px;
     object-fit: cover;
 }
-.product-container-cart{
+.add-to-cart-btn{
     position: relative;
     left: 101px;
     bottom: 2px;
@@ -108,8 +108,6 @@ p{
     height: 18px;
     color: var(--onyx);
     position: relative;
-    top: 2px;
-    left: 5px;
 }
 .product-info {
     padding: 2px;

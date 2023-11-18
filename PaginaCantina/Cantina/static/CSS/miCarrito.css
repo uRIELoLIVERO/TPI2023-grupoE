@@ -71,6 +71,7 @@ hr{
         padding: 40px;
         background-color: var(--antiFlashWhite);
         border-radius: 10px;
+        height: auto;
     }
 
     .card{
