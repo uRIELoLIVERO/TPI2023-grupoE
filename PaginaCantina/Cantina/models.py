@@ -42,23 +42,29 @@ class Producto(models.Model):
         total = sum(item.subtotal for item in carrito)
         return total
 
+
+
 class DetallePedido(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     subtotal = models.DecimalField(max_digits=10, decimal_places=2)
 
 class Pedido(models.Model):
-    estado_choices = [
+    ESTADO_CHOICES = [
         ('pendiente', 'Pendiente'),
         ('cancelado', 'Cancelado'),
         ('entregado', 'Entregado'),
     ]
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    detalles = models.ManyToManyField(DetallePedido)
     fechaPedido = models.DateTimeField(auto_now_add=True)
-    estado = models.CharField(max_length=20, choices=estado_choices, default='pendiente')
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
     direccionEntrega = models.CharField(max_length=255, blank=True, null=True)
+    detalles = models.ManyToManyField(DetallePedido)
+    cliente_id = models.IntegerField()
 
+    
+    def calcular_total(self):
+        total = self.detalles.aggregate(total=Sum('subtotal'))['total']
+        return total if total is not None else 0
 
 class AdminProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # Relación con el modelo User de Django

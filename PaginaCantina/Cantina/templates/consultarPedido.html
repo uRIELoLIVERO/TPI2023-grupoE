@@ -10,7 +10,7 @@
         <hr class="border-black m-1 mb-3">
     
         <div class="container-request">
-            
+          {%if nuevo_pedido %}            
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
@@ -23,36 +23,30 @@
                                 <picture>
                                     <img src="{% static 'images/user.png' %}" class="rounded-circle image-request" alt="..." style="background-color: var(--platinum);">
                                 </picture>
-                                <p class="nombre-request">Valentin</p>
+                                <p class="nombre-request">{{ nuevo_pedido.cliente }}</p>
                             </div>
                             <div class="secondary-info-request">
                                 <p class="date-request">13 de Junio</p>
                                 <div class="d-inline-flex status-request">
                                     <p class="h5 mt-0 mb-0 titulos-principal">Cancelado</p><span class="align-middle d-flex align-items-center"><img class="status-request-image" src="{% static 'images/crossed.png' %}" alt="" height="15px"></span>
                                 </div>
-                                <p class="id-request">ID:#123013</p>
+                                <p class="id-request">ID:#{{nuevo_pedido.id}}</p>
                             </div>
                         </div>
                     </button>
-                  </h2>    
+                  </h2>
                   <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                     <div class="accordion-body">
                         <div class="request-product-info">
+                        {% for detalle in nuevo_pedido.detalles.all %}
                            <div class="request-subtotal">
-                            <p>Alfajor TERRABUSI</p>
-                            <p>$256.33</p>
+                             <p>{{ detalle.producto.nombre }}</p>
+                             <hr>
+                             <p>{{ detalle.subtotal }}</p>
                            </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe cortado</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe lagrima</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <hr>
-        
-                           <div class="request-subtotal">
+                        {% endfor %}
+                        <hr>
+                            <div class="request-subtotal">
                             <p class="request-total">Total</p>
                             <p class="request-total">$656.59</p>
                            </div>
@@ -64,227 +58,7 @@
                   </div>
                 </div>
             </div>   
-            
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
-                        <div class="request-personal-info">
-                            <div class="primary-info-request">
-                                <div class="d-inline-flex">
-                                    <span class="me-2 align-middle d-flex align-items-center"><img class="" src="{% static 'images/clock.png' %}" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">11:00pm</p>
-                                </div>
-                                <picture>
-                                    <img src="{% static 'images/user.png' %}" class="rounded-circle image-request" alt="..." style="background-color: var(--platinum);">
-                                </picture>
-                                <p class="nombre-request">Valentin</p>
-                            </div>
-                            <div class="secondary-info-request">
-                                <p class="date-request">13 de Junio</p>
-                                <div class="d-inline-flex status-request">
-                                    <p class="h5 mt-0 mb-0 titulos-principal">Pendiente</p><span class="align-middle d-flex align-items-center"><img class="status-request-image" src="{% static 'images/loading.png' %}" alt="" height="15px"></span>
-                                </div>
-                                <p class="id-request">ID:#123013</p>
-                            </div>
-                        </div>
-                    </button>
-                  </h2>    
-                  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <div class="request-product-info">
-                           <div class="request-subtotal">
-                            <p>Alfajor TERRABUSI</p>
-                            <p>$256.33</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe cortado</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe lagrima</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <hr>
-        
-                           <div class="request-subtotal">
-                            <p class="request-total">Total</p>
-                            <p class="request-total">$656.59</p>
-                           </div>
-                        </div>
-                        <div class="d-grid mx-auto d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-cancelarPedido bordesInputs border-dark botonIngresar text-light rounded-4 pt-1 pb-1 ps-4 pe-4">Cancelar pedido</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>  
-
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
-                        <div class="request-personal-info">
-                            <div class="primary-info-request">
-                                <div class="d-inline-flex">
-                                    <span class="me-2 align-middle d-flex align-items-center"><img class="" src="{% static 'images/clock.png' %}" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">11:00pm</p>
-                                </div>
-                                <picture>
-                                    <img src="{% static 'images/user.png' %}" class="rounded-circle image-request" alt="..." style="background-color: var(--platinum);">
-                                </picture>
-                                <p class="nombre-request">Valentin</p>
-                            </div>
-                            <div class="secondary-info-request">
-                                <p class="date-request">13 de Junio</p>
-                                <div class="d-inline-flex status-request">
-                                    <p class="h5 mt-0 mb-0 titulos-principal">Entregado</p><span class="align-middle d-flex align-items-center"><img class="status-request-image" src="{% static 'images/seen.png' %}" alt="" height="15px"></span>
-                                </div>
-                                <p class="id-request">ID:#123013</p>
-                            </div>
-                        </div>
-                    </button>
-                  </h2>    
-                  <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <div class="request-product-info">
-                           <div class="request-subtotal">
-                            <p>Alfajor TERRABUSI</p>
-                            <p>$256.33</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe cortado</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe lagrima</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <hr>
-        
-                           <div class="request-subtotal">
-                            <p class="request-total">Total</p>
-                            <p class="request-total">$656.59</p>
-                           </div>
-                        </div>
-                        <div class="d-grid mx-auto d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-cancelarPedido bordesInputs border-dark botonIngresar text-light rounded-4 pt-1 pb-1 ps-4 pe-4">Cancelar pedido</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>   
-
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
-                        <div class="request-personal-info">
-                            <div class="primary-info-request">
-                                <div class="d-inline-flex">
-                                    <span class="me-2 align-middle d-flex align-items-center"><img class="" src="{% static 'images/clock.png' %}" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">11:00pm</p>
-                                </div>
-                                <picture>
-                                    <img src="{% static 'images/user.png' %}" class="rounded-circle image-request" alt="..." style="background-color: var(--platinum);">
-                                </picture>
-                                <p class="nombre-request">Valentin</p>
-                            </div>
-                            <div class="secondary-info-request">
-                                <p class="date-request">13 de Junio</p>
-                                <div class="d-inline-flex status-request">
-                                    <p class="h5 mt-0 mb-0 titulos-principal">Entregado</p><span class="align-middle d-flex align-items-center"><img class="status-request-image" src="{% static 'images/seen.png' %}" alt="" height="15px"></span>
-                                </div>
-                                <p class="id-request">ID:#123013</p>
-                            </div>
-                        </div>
-                    </button>
-                  </h2>    
-                  <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <div class="request-product-info">
-                           <div class="request-subtotal">
-                            <p>Alfajor TERRABUSI</p>
-                            <p>$256.33</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe cortado</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe lagrima</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <hr>
-        
-                           <div class="request-subtotal">
-                            <p class="request-total">Total</p>
-                            <p class="request-total">$656.59</p>
-                           </div>
-                        </div>
-                        <div class="d-grid mx-auto d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-cancelarPedido bordesInputs border-dark botonIngresar text-light rounded-4 pt-1 pb-1 ps-4 pe-4">Cancelar pedido</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>   
-
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">
-                        <div class="request-personal-info">
-                            <div class="primary-info-request">
-                                <div class="d-inline-flex">
-                                    <span class="me-2 align-middle d-flex align-items-center"><img class="" src="{% static 'images/clock.png' %}" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">11:00pm</p>
-                                </div>
-                                <picture>
-                                    <img src="{% static 'images/user.png' %}" class="rounded-circle image-request" alt="..." style="background-color: var(--platinum);">
-                                </picture>
-                                <p class="nombre-request">Valentin</p>
-                            </div>
-                            <div class="secondary-info-request">
-                                <p class="date-request">13 de Junio</p>
-                                <div class="d-inline-flex status-request">
-                                    <p class="h5 mt-0 mb-0 titulos-principal">Entregado</p><span class="align-middle d-flex align-items-center"><img class="status-request-image" src="{% static 'images/seen.png' %}" alt="" height="15px"></span>
-                                </div>
-                                <p class="id-request">ID:#123013</p>
-                            </div>
-                        </div>
-                    </button>
-                  </h2>    
-                  <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        <div class="request-product-info">
-                           <div class="request-subtotal">
-                            <p>Alfajor TERRABUSI</p>
-                            <p>$256.33</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe cortado</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <div class="request-subtotal">
-                            <p>Cafe lagrima</p>
-                            <p>$200.13</p>
-                           </div> 
-                           <hr>
-        
-                           <div class="request-subtotal">
-                            <p class="request-total">Total</p>
-                            <p class="request-total">$656.59</p>
-                           </div>
-                        </div>
-                        <div class="d-grid mx-auto d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-cancelarPedido bordesInputs border-dark botonIngresar text-light rounded-4 pt-1 pb-1 ps-4 pe-4">Cancelar pedido</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>   
-            
-            
-        </div>
-
-        
-
+            {% endif %}
+          </div>
     </section>
 {% endblock %}
