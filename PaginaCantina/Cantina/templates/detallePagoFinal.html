@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+    <div class="d-flex align-items-center container-main-success">
+        <div class="container-success container d-flex text-center justify-content-center align-items-center">
+            <p>Tu orden fue recibida con exito</p>
+            <picture>
+                <img src="{% static 'images/checklist.png' %}" alt="" height="100px">
+            </picture>
+            <p>Espere mientras la solicitud es procesada</p>
+            <div class="row row-cols-1  container-success-button">
+                <a href="{% url 'consultarPedido' %}" class="btn col mb-3 mt-2" type="button">Revisar estado del pedido</a>
+                <a href="{% url 'consultarProductos' %}" class="btn col" type="button">Volver al menu</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

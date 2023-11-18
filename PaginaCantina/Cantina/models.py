@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 class Area(models.Model):
     nombre = models.CharField(max_length=100)
     ubicacion = models.CharField(max_length=100)
@@ -23,6 +23,10 @@ class Producto(models.Model):
     stock = models.IntegerField()
     imagen = models.ImageField()
     estado = models.BooleanField()
+    carrito = models.IntegerField(default=0)
+    cantidad = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(stock)])
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
     
     @property
     def imagenURL(self):
@@ -32,22 +36,35 @@ class Producto(models.Model):
             url = ''
         return url
 
+    @property
+    def total_carrito(self):
+        carrito = self.detallepedido_set.filter(pedido__estado='pendiente')
+        total = sum(item.subtotal for item in carrito)
+        return total
+
+
+
 class DetallePedido(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
 
 class Pedido(models.Model):
-    estado_choices = [
+    ESTADO_CHOICES = [
         ('pendiente', 'Pendiente'),
         ('cancelado', 'Cancelado'),
         ('entregado', 'Entregado'),
     ]
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    detalles = models.ManyToManyField(DetallePedido)
     fechaPedido = models.DateTimeField(auto_now_add=True)
-    estado = models.CharField(max_length=20, choices=estado_choices, default='pendiente')
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
     direccionEntrega = models.CharField(max_length=255, blank=True, null=True)
+    detalles = models.ManyToManyField(DetallePedido)
+    cliente_id = models.IntegerField()
 
+    
+    def calcular_total(self):
+        total = self.detalles.aggregate(total=Sum('subtotal'))['total']
+        return total if total is not None else 0
 
 class AdminProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # Relación con el modelo User de Django

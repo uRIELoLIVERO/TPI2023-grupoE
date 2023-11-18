@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+    <section class="ps-5 pe-5 container-see-request">
+        <div class="row align-items-center container-fix-navbar">
+            <div class="col d-inline-flex">
+                <a href="{% url 'consultarProductos' %}" class="me-2 align-middle d-flex align-items-center"><img src="{% static 'images/return.png' %}" alt="" height="18px" ></a><p class="h5 mt-0 mb-0 titulos-principal">Mis Pedidos</p>
+            </div>
+        </div>
+        <hr class="border-black m-1 mb-3">
+    
+        <div class="container-request">
+          {%if nuevo_pedido %}            
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <div class="request-personal-info">
+                            <div class="primary-info-request">
+                                <div class="d-inline-flex">
+                                    <span class="me-2 align-middle d-flex align-items-center"><img class="" src="{% static 'images/clock.png' %}" alt="" height="18px"></span><p class="h5 mt-0 mb-0 titulos-principal fecha-request">11:00pm</p>
+                                </div>
+                                <picture>
+                                    <img src="{% static 'images/user.png' %}" class="rounded-circle image-request" alt="..." style="background-color: var(--platinum);">
+                                </picture>
+                                <p class="nombre-request">{{ nuevo_pedido.cliente }}</p>
+                            </div>
+                            <div class="secondary-info-request">
+                                <p class="date-request">13 de Junio</p>
+                                <div class="d-inline-flex status-request">
+                                    <p class="h5 mt-0 mb-0 titulos-principal">Pendiente</p><span class="align-middle d-flex align-items-center"><img class="status-request-image" src="{% static 'images/loading.png' %}" alt="" height="15px"></span>
+                                </div>
+                                <p class="id-request">ID:#{{nuevo_pedido.id}}</p>
+                            </div>
+                        </div>
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="request-product-info">
+                        {% for detalle in nuevo_pedido.detalles.all %}
+                           <div class="request-subtotal">
+                             <p>{{ detalle.producto.nombre }}</p>
+                             <hr>
+                             <p>{{ detalle.subtotal }}</p>
+                           </div> 
+                        {% endfor %}
+                        <hr>
+                            <div class="request-subtotal">
+                            <p class="request-total">Total</p>
+                            <p class="request-total">$656.59</p>
+                           </div>
+                        </div>
+                        <div class="d-grid mx-auto d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-cancelarPedido bordesInputs border-dark botonIngresar text-light rounded-4 pt-1 pb-1 ps-4 pe-4">Cancelar pedido</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>   
+            {% endif %}
+          </div>
+    </section>
+{% endblock %}

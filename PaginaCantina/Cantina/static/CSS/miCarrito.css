@@ -1,31 +1,6 @@
-:root{
-    --hunyadiYellow: #EDAE49;
-    --onyx: #313638;
-    --Alabaster: #E0DFD5;
-    --antiFlashWhite: #E8E9EB ;
-    --sandyBrown: #F19953;
-    --cafeNoir: #56351E;
-    --asparagus: #6A9F56;
-    --celadon: #ACD8AA;
-    --vermilion: #E93835;
-    --blush: #E0677F;
-    --lapisLazulli: #2660A4;
-    --sm: .8em;
-    --md: 1.2em;
-    --lg: 1.6em;
-}
-
-*{
-    font-family: 'Poppins', sans-serif;
-}
-
-html, body{
-    height: 100%;
-    background-color: var(--antiFlashWhite);
-}
-
-main{
-    height: 300px;
+.container-miCarrito{
+    height: 100vh;
+    background-color: var(--Alabaster);
 }
 
 hr{
@@ -53,9 +28,10 @@ hr{
 .card{
     border: none;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
-    background-color: #EEEEEE;
+    background-color: var(--antiFlashWhite);
     width: 300px;
 }
+
 
 .precio, .precio-total{
     font-weight: 600;
@@ -85,14 +61,17 @@ hr{
 }
 
 @media (min-width: 1000px){
-    html, body{
+    .container-miCarrito{
         background-color: #CCCCCC;
     }
-    main{
+
+    .container-carrito{
+        height: auto;
         width: 75%;
         padding: 40px;
         background-color: var(--antiFlashWhite);
         border-radius: 10px;
+        height: auto;
     }
 
     .card{

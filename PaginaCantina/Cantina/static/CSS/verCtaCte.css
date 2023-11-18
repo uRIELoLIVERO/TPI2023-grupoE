@@ -1,31 +1,11 @@
-:root{
-    --hunyadiYellow: #EDAE49;
-    --onyx: #313638;
-    --Alabaster: #E0DFD5;
-    --antiFlashWhite: #E8E9EB ;
-    --sandyBrown: #F19953;
-    --cafeNoir: #56351E;
-    --asparagus: #6A9F56;
-    --celadon: #ACD8AA;
-    --vermilion: #E93835;
-    --blush: #E0677F;
-    --lapisLazulli: #2660A4;
-    --sm: .8em;
-    --md: 1.2em;
-    --lg: 1.6em;
-}
-
-*{
-    font-family: 'Poppins', sans-serif;
-}
-
-html, body{
-    height: 100%;
-    background-color: var(--antiFlashWhite) !important;
+.container-verCtaCte{
+    padding-top: 75px;
+    height: 100vh;
+    background-color: var(--Alabaster) !important;
 }
 
 .container-balance{
-    background-color: var(--cafeNoir); /* este color cambia según la cantidad de plata debiendo */
+    background-color: var(--vermilion); /* este color cambia según la cantidad de plata debiendo */
 }
 
 .container-balance-wallet{
@@ -63,14 +43,14 @@ html, body{
 
 
 @media (min-width: 1000px){
-    body, html{
+    .container-verCtaCte{
         background-color: #CCCCCC !important;
     }
 
-    main{
+    .containerMain-verCtaCte{
         width: 80% !important;
         height: auto;
-        padding: 12px;
+        padding: 8px;
         margin: 20px auto;
         background-color: var(--antiFlashWhite) !important;
         border-radius: 10px;

@@ -33,17 +33,17 @@ class ClienteForm(forms.ModelForm):
             'cuentaCorriente': NumberInput(attrs={'class': 'form-control'}),
             'fechaNacimiento': DateInput(attrs={'class': 'form-control'}),
             'area': Select(attrs={'class': 'form-control'}),
+            'user_username': forms.TextInput(attrs={'class': 'form-control bg-danger'}),
+            'user_password': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-        # Nuevos campos para el usuario
-        user_username = forms.CharField(widget=TextInput(attrs={'class': 'form-control'}))
-        user_password = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
+
  
 
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre', 'descripcion', 'precioUnitario', 'stock', 'imagen', 'estado']
+        fields = ['nombre', 'descripcion', 'precioUnitario', 'stock', 'imagen', 'estado', 'carrito', 'cantidad']
         widgets = {
             'nombre': TextInput(attrs={'class': 'form-control'}),
             'descripcion': TextInput(attrs={'class': 'form-control'}),
@@ -51,35 +51,33 @@ class ProductoForm(forms.ModelForm):
             'stock': NumberInput(attrs={'class': 'form-control'}),
             'imagen': FileInput(attrs={'class': 'form-control'}),  
             'estado': CheckboxInput(attrs={'class': 'form-check-input'}),
+            'carrito': NumberInput(attrs={'class': 'form-control'}),
+            'cantidad': NumberInput(attrs={'class': 'form-control'}),
         }
+
 
 
 class DetallePedidoForm(forms.ModelForm):
     class Meta:
         model = DetallePedido
-        fields = ['producto', 'cantidad']
+        fields = ['producto', 'cantidad',]
         widgets = {
-            'producto': Select(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'cantidad': NumberInput(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
+            'producto': Select(attrs={'class': 'form-control'}),
+            'cantidad': NumberInput(attrs={'class': 'form-control'}),
         }
 
-class PedidoForm(forms.ModelForm):
-    class Meta:
-        model = Pedido
-        fields = ['cliente', 'detalles']
 
-    detalles = forms.MultipleChoiceField(
-        choices=[(detalle.id, str(detalle)) for detalle in DetallePedido.objects.all()],
+
+class PedidoForm(forms.ModelForm):
+    detalles = forms.ModelMultipleChoiceField(
+        queryset=DetallePedido.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+
+    class Meta:
+        model = Pedido
+        fields = ['detalles']
+
 
 class AdminProfileForm(forms.ModelForm):
     class Meta:
@@ -96,7 +94,7 @@ class AdminProfileForm(forms.ModelForm):
 class UserCreationFormExtended(UserCreationForm):
     class Meta:
         model = User
-        fields = UserCreationForm.Meta.fields + ('email',)  # Agrega el campo de correo electrónico
+        fields = UserCreationForm.Meta.fields + ('email','password')  # Agrega el campo de correo electrónico
 
 class CuentaCorrienteForm(forms.ModelForm):
     class Meta:

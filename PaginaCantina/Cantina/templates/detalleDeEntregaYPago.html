@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="global-container">
+
+        <div class="container d-flex flex-column align-items-center">
+
+            <div class="container m-auto pt-3">
+                <div class="progress container-progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated container-progress-object" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="container-detalleEntrega m-auto pt-3 pb-0">
+                    <h3 class="container-detalleEntrega-h3 mb-0">Detalle de Entrega</h3>
+                    <p class="m-0 container-detalleEntrega-p mt-1">Fecha y Hora</p>
+                    <label class="container-detalleEntrega-label">
+                        <input id="input-date-detalleEntrega" class="container-detalleEntrega-label-input w-100 bg-white pl-3" type="datetime-local" id="Calendario" name="Calendario">
+                    </label>
+                    <p class="m-0 container-detalleEntrega-p mt-2">Ubicación de entrega</p>
+                    <select id="ubicacionEntrega" class="control-form container-detalleEntrega-select w-100 bg-white pl-3">
+                        <option value="Aula201">Aula201</option>
+                        <option value="Aula212">Aula212</option>
+                        <option value="Aula213">Aula213</option>
+                        <option value="Aula301">Aula301</option>
+                        <option value="Aula309">Aula309</option>
+                        <option value="Aula310">Aula310</option>
+                        <option value="Aula311">Aula311</option>
+                        <option value="Aula420">Aula420</option>
+                        <option value="Aula407">Aula407</option>
+                        <option value="CICOM">CICOM</option>
+                        <option value="TICS">TICS</option>
+                        <option value="Coworking">Coworking</option>
+                        <option value="Departamento Basicas">Departamento Basicas</option>
+                        <option value="Departamento Quimica">Departamento Quimica</option>
+                        <option value="Laboratorio 1">Laboratorio 1</option>
+                        <option value="Laboratorio 2">Laboratorio 2</option>
+                        <option value="Laboratorio 3">Laboratorio 3</option>
+                        <option value="Laboratorio 4">Laboratorio 4</option>
+                    </select>
+                    <div class="form-group">
+                        <p class="m-0 container-detalleEntrega-p mt-2">Notas</p>
+                        <textarea id="textArea-Entrega" class="form-control container-detalleEntrega-textArea w-100" id="exampleFormControlTextarea1" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="container-detallePago m-auto pt-3">
+                    <h3 class="container-detallePago-h3 mb-0">Detalle de Pago</h3>
+                    <p class="container-detallePago-p pt-2">Método de Pago</p>
+                    <form class="container-detallePago-form">
+                      <select id="tipoCuenta" name="tipoCuenta" class="control-form container-detallePago-form-select w-100 bg-white" onchange="mostrarOcultar()">
+                        <option value="#">Selecione una opción...</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="cuentaCorriente">Cuenta Corriente</option>
+                      </select>
+          
+                      <div id="cvuContainer" class="cvu-container container-detallePago-form-CVU">
+                          <label for="cvu" class="w-100">
+                              <div class="container-detallePago-form-CVU-Entero mx-auto mt-4 row row-cols-1">
+                                <div class="col pt-3">
+                                    <p><b>CVU: 0000007900204210831001</b></p>
+                                </div>  
+                                <div class="col pb-3">
+                                    <p> <b>ALIAS: cantinautn</b></p>
+                                </div>
+                              </div>
+                            
+                          </label>
+                      </div>
+                  
+                        <div id="areasSelect" class="mt-4 container-detallePago-form-Area">
+                            <p class="col w-100 p-0">Area de pago</p>
+                            <select id="areas" name="areas" class="col bg-white control-form container-detallePago-form-select-Area pl-3">
+                                <option value="TICS">TICS</option>
+                                <option value="CICOM">CICOM</option>
+
+                            </select>
+                        </div>
+                    </form>
+                  </div> 
+            </div>
+            
+            <div class="container container-tuPedido mt-5">
+                <h3 class="container--tuPedido__h3">Tu pedido</h3>
+                <div class="j">
+                    <div id="totalContainer" class="container-tuPedido-Total row bg-white m-0 m-0">
+                        <div class="col p-0 my-auto">
+                            <p class="ps-4">Total</p>
+                        </div>
+                        <div class="col p-0 text-right my-auto">
+                            <p class="text-end pe-4" id="totalPlaceholder"></p>
+                        </div>
+                    </div>     
+                  </div>
+            </div>
+
+            <div class="container-botones d-grid gap-2 w-100 pl-4 pr-4">
+                <a id="boton-continuar-pedido" href="{% url 'revisionPedido' %}"class="container-botones_Continuar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button">Continuar</a>
+                <a href="{% url 'productosCarrito' %}" class="container-botones_Cancelar btn btn-default w-100 mt-3 rounded-pill border border-dark text-light" type="button" >Cancelar</a>
+            </div>
+            
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function mostrarOcultar() {
+          var tipoCuenta = document.getElementById("tipoCuenta");
+          var cvuContainer = document.getElementById("cvuContainer");
+          var areasSelect = document.getElementById("areasSelect");
+      
+          if (tipoCuenta.value === "transferencia") {
+            cvuContainer.style.display = "block";
+            areasSelect.style.display = "none";
+          } else if (tipoCuenta.value === "cuentaCorriente") {
+            cvuContainer.style.display = "none";
+            areasSelect.style.display = "block";
+          } else {
+            cvuContainer.style.display = "none";
+            areasSelect.style.display = "none";
+          }
+        }
+      </script>
+      <script>
+        // Espera a que el documento esté completamente cargado
+        $(document).ready(function() {
+            // Hacer una solicitud al servidor para obtener las áreas
+            $.ajax({
+                url: '/obtener_areas/', // Reemplaza con la URL correcta de tu aplicación
+                type: 'GET',
+                success: function(data) {
+                    // Llenar el elemento select con las opciones de las áreas
+                    let ubicacionEntregaSelect = $('#ubicacionEntrega');
+                    data.areas.forEach(function (area) {
+                        let option = $('<option>', { value: area, text: area });
+                        ubicacionEntregaSelect.append(option);
+                    });
+                },
+                error: function(error) {
+                    console.log('Error al obtener las áreas:', error);
+                }
+            });
+        });
+    </script>
+<!-- Actualiza el script AJAX para obtener el total -->
+<script>
+    $(document).ready(function() {
+        // Hacer una solicitud al servidor para obtener el total
+        $.ajax({
+            url: '/calcular_total/', // Reemplaza con la URL correcta de tu aplicación
+            type: 'GET',
+            success: function(data) {
+                // Verifica si se recibió un total válido
+                if ('total' in data) {
+                    // Actualizar el contenido del totalPlaceholder con el nuevo total
+                    $('#totalPlaceholder').text(data.total);
+                } else {
+                    console.log('Respuesta inesperada del servidor:', data);
+                }
+            },
+            error: function(error) {
+                console.log('Error al obtener el total:', error);
+            }
+        });
+    });
+</script>
+{% endblock %}

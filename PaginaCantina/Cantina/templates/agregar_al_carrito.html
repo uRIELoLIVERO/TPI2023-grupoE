@@ -1,13 +1,74 @@
 {% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+  <div class="container-miCarrito d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+        <main class="m-auto container-carrito">
+            <div class="container p-0">
+                <div class="row align-items-center">
+                    <div class="col d-inline-flex">
+                        <span class="me-2 align-middle d-flex align-items-center"><a href="{% url 'consultarProductos' %}"><img class="" src="{% static 'images/return 1.svg' %}" alt="" height="18px"></a></span><p class="h5 mt-0 mb-0 titulos-principal">Mi carrito</p>
+                    </div>
+                    <div class="col text-end">
+                        <p class="h5 m-0 titulos-principal">{{ productos_en_carrito.total_items }} items</p>
+                    </div>
+                </div>
+                <hr class="border-black m-1 mb-3">
+            </div>
+            {% for producto in productos_en_carrito %}
+            <div class="card">
+              <div class="row fila-objeto" data-product-id="{{ producto.id }}">
+                <div class="ps-3 pe-0 col-3 columna-imagen align-self-center">
+                  <img src="{{ producto.imagenURL }}" alt="{{ producto.nombre }}" class="mx-auto d-block" height="57px">
+                </div>
+                <div class="col-9 mt-2 mb-2 columna-detalles align-self-center">
+                  <div class="row align-items-center fila-detalles">
+                    <div class="col-xs-6 col columna-nombre">
+                      <p class="m-0 fontSize-card text-center">{{ producto.nombre }}</p>
+                    </div>
+                    <div class="col-xs-6 col columna-cantidad d-flex align-items-center justify-content-center">
+                        <div class="container-cantidad d-flex justify-content-center">
+                            <img src="{% static 'images/square-minus-regular.svg' %}" alt="" width="18" class="accion-cantidad" data-action="restar" data-product-id="{{ producto.id }}">
+                            <p class="ms-2 me-2 text-center cantidad rounded-1 p-0 m-auto" id="cantidad-{{ producto.id }}">{{ producto.cantidad }}</p>
+                            <img src="{% static 'images/square-plus-solid.svg' %}" alt="" width="18" class="accion-cantidad" data-action="sumar" data-product-id="{{ producto.id }}">
+                        </div>
+                    </div>                    
+                    <div class="col-xs-6 col columna-botonEliminar d-flex justify-content-center">
+                      <button   class="btn border border-black btn-danger boton-eliminar text-dark pt-0 pb-0 d-flex align-items-center" data-product-id="{{ producto.id }}" >
+                        <span class="me-1 imagen-trash"><img src="{% static 'images/trash-can-solid.svg' %}" alt="" width="10px"></span>
+                        <p class="m-0 p-0">Eliminar</p>
+                      </button>
+                    </div>
+                    <div class="col-xs-6 col columna-precioUnitario">
+                        <p class="m-0 p-0 fontSize-card precio text-center">${{ producto.precioUnitario }}</p>
+                    </div>
+                    <div class="col-xs-12 col columna-subtotal pe-4">
+                        <p class="m-0 p-0 fontSize-card subtotal text-end">${{ producto.subtotal }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="invisible">
+            {% endfor %}
 
-{% block content %} 
-<h1>Agregar al Carrito</h1>
-    
-    <p>Producto: {{ producto.nombre }}</p>
-    
-    <form method="post" action="{% url 'agregar_al_carrito' producto.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Agregar al carrito">
-    </form>
+            <div class="container-totalMasIrAPagar">
+              <div class="total-a-pagar mt-4 row d-flex align-items-center m-0 rounded-4">
+                <div class="col">
+                  <p class="mb-0 h4">Total</p>
+                </div>
+                <div class="col text-end">
+                    <div class="total-carrito">
+                        <p class="mb-0 precio-total h4">$<span id="total-carrito">0.00</span></p>
+                </div>
+                </div>
+              </div>
+              <div class="d-grid mx-auto mt-3 container-irAPagar">
+                <a href="{% url 'detalleDeEntregaYPago' %}" type="button" id="btnIrAPagar" class="btn btn-primary border-dark text-light rounded-4 pt-1 pb-1 bg-button">Ir a pagar</a>
+              </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
 {% endblock %}

@@ -6,10 +6,22 @@ from django.contrib import messages
 from .forms import ClienteForm, UserCreationFormExtended, TuFormularioDeFiltro, DetallePedidoForm
 from .models import *
 from django.views import View
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+import json
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 def mysite(request):
     # Lógica de negocio aquí
     return render(request, 'mysite.html')
+
+def detalledePago(request):
+    return render(request, 'detalledePago.html')
+
+def detalledeEntrega(request):
+    return render(request, 'detalledeEntrega.html')
 
 def login_view(request):
     if request.method == 'POST':
@@ -53,8 +65,8 @@ def miCarrito(request):
     return render(request, 'miCarrito.html', context)
 
 
-def detallePago(request):
-    return render(request, 'detallePago.html')
+def detalleDeEntregaYPago(request):
+    return render(request, 'detalleDeEntregaYPago.html')
 
 def consultarProductos(request):
     productos_disponibles = Producto.objects.filter(estado=True)
@@ -96,6 +108,142 @@ def consultarProductos(request):
         'form': TuFormularioDeFiltro(),
         'detalle_form': DetallePedidoForm(),
     }
-
     return render(request, 'consultarProductos.html', context)
+
+
+def productos_en_carrito(request):
+    productos_en_carrito = Producto.objects.filter(carrito=1)
+    return render(request, 'agregar_al_carrito.html', {'productos_en_carrito': productos_en_carrito})
+
+def actualizar_carrito(request, product_id):
+    producto = get_object_or_404(Producto, id=product_id)
+    producto.carrito = 1
+    producto.save()  # Actualiza el valor de 'carrito' a 1
+    return JsonResponse({'success': True})
+
+def quitarProducto(request, product_id):
+    # Utiliza el decorador @require_POST para permitir solo solicitudes POST
+    producto = get_object_or_404(Producto, id=product_id)
+    producto.carrito = 0
+    producto.save()
+    return JsonResponse({'success': True})
+
+def actualizar_subtotal(request):
+    if request.method == 'POST':
+        producto_id = request.POST.get('productoId')
+        nuevo_subtotal = request.POST.get('nuevoSubtotal')
+
+        try:
+            carrito_item = Carrito.objects.get(id=producto_id)
+            carrito_item.cantidad = nuevo_subtotal
+            carrito_item.save()
+
+            return JsonResponse({'nuevo_subtotal': nuevo_subtotal})
+        except Carrito.DoesNotExist:
+            return JsonResponse({'error': 'Producto no encontrado en el carrito'})
+    else:
+        return JsonResponse({'error': 'Método no permitido'})
+
+def guardar_datos(request):
+    if request.method == 'POST':
+        data = json.loads(request.POST.get('productos'))
+
+        for item in data:
+            try:
+                producto = Producto.objects.get(id=item['id'])
+
+                # Actualiza los campos del objeto existente
+                producto.cantidad = item['cantidad']
+                producto.subtotal = item['subtotal']
+
+                producto.save()
+
+            except Producto.DoesNotExist:
+                # Manejar el caso donde el producto no existe en la base de datos
+                pass
+
+        return JsonResponse({'mensaje': 'Datos actualizados con éxito'})
+    else:
+        # Manejar el caso donde la solicitud no es POST
+        pass
+
+
+def obtener_areas(request):
+    areas = Area.objects.all()
+    areas_nombres = [area.nombre for area in areas]
+    return JsonResponse({'areas': areas_nombres})
+
+def calcular_total(request):
+    try:
+        productos = Producto.objects.all()
+        total = sum(producto.subtotal for producto in productos)
+        return JsonResponse({'total': total})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+def detalle_pedido(request):
+    return render(request, 'detalleDeEntregaYPago.html')
+
+def detalles_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    detalles_pedido = DetallePedido.objects.filter(pedido=pedido)  # Obtener detalles asociados a este pedido
+    return render(request, 'detalles_pedido.html', {'pedido': pedido, 'detalles_pedido': detalles_pedido})
+
+
+
+@login_required
+def consultarPedido(request):
+    productos_seleccionados = Producto.objects.filter(carrito=1)
+    if request.user.is_authenticated:
+        cliente_id = request.user.id  # Obtener el ID del usuario autenticado
+
+        nuevo_pedido = Pedido.objects.create(cliente_id=cliente_id)  # Usar el ID del cliente obtenido
+
+        total_pedido = 0  # Inicializamos el total del pedido
+
+        for producto in productos_seleccionados:
+            detalle_pedido = DetallePedido.objects.create(
+                producto=producto,
+                cantidad=producto.cantidad,
+                subtotal=producto.subtotal
+            )
+            nuevo_pedido.detalles.add(detalle_pedido)
+            total_pedido += producto.subtotal
+
+        nuevo_pedido.total = total_pedido
+        nuevo_pedido.save()
+
+        productos_seleccionados.update(carrito=0)
+
+        return render(request, 'consultarPedido.html', {'nuevo_pedido': nuevo_pedido})
+
+@login_required
+def lista_pedidos(request):
+    # Obtener los pedidos del usuario autenticado
+    pedidos_usuario = Pedido.objects.filter(cliente=request.user)
+    
+    # Pasar los pedidos al contexto
+    context = {
+        'pedidos_usuario': pedidos_usuario
+    }
+
+    return render(request, 'lista_pedidos.html', context)
+
+def obtener_pedidos(request):
+    # Lógica para obtener los pedidos
+    return render(request, 'obtener_pedidos.html', context)
+
+
+def verCtaCte(request):
+    return render(request, 'verCtaCte.html')
+
+def resetPassword2(request):
+    return render(request, 'resetPassword2.html')
+
+
+def revisionPedido(request):
+    return render(request, 'revisionPedido.html')
+
+def detallePagoFinal(request):
+    return render(request, 'detallePagoFinal.html')
 

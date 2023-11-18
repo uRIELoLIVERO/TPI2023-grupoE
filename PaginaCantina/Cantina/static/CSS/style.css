@@ -1,3 +1,11 @@
+html{
+    font-size: 67.25%;
+}
+
+*{
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
 :root {
     --hunyadiYellow: #EDAE49;
     --onyx: #313638;
@@ -14,9 +22,6 @@
     --sm: .8em;
     --md: 1.2em;
     --lg: 1.6em;
-}
-*{
-    font-family: "poppins", Arial, Helvetica, sans-serif;
 }
 .inactive{
     display: none !important;
@@ -41,18 +46,39 @@
 #infoMenu .dropdown{
     height: 48.5px;
 }
-.nav-item div p{
+.fixed-top{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.navbar{
+    z-index: 1030;
+    display: flex !important;
+    align-content: space-between !important;
+    align-items: center;
+}
+.nav-item div a{
     color: var(--onyx);
 }
-.nav-pills li div p{
+.nav-pills li div a{
     font-size: var(--lg);
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 }
 .nav-pills li{
     margin: 8px 0;
 }
+
+.dropdown-menu-session{
+    right: 0; 
+    left: auto !important;
+    position: absolute;
+    margin-top: 13px !important; 
+}   
+
 .flex-container{
     height: 80vh;
     display: flex;
@@ -65,4 +91,20 @@
 }
 #desktopMenu{
     display: none;
+}
+#desktopMenu li a{
+    color: var(--onyx) !important;
+}
+#burgerMenu{
+    display:  fixed;
+}
+@media (min-width: 1024px){
+    #desktopMenu{
+        display: flex;
+        flex-direction: row;
+    }
+    #desktopMenu li a{
+        font-size: var(--md);
+        color: white;
+    }
 }

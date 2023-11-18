@@ -1,0 +1,27 @@
+.container-main-success{
+    background-color: var(--Alabaster);
+}
+.container-success{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.container-success p{
+    font-weight: bold;
+    font-size: var(--lg);
+}
+.container-success-button a{
+    border: 1px solid var(--onyx);
+    background-color: white;
+    color: var(--lapisLazulli);
+    font-size: var(--md);
+}
+.container-success-button a:first-child{
+    background-color: var(--lapisLazulli);
+    color: white;
+}
+@media (min-width: 1024px) {
+    .container-success-button a{
+        font-size: var(--lg);
+    }
+}
