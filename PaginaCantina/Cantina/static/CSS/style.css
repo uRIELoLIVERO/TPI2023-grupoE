@@ -71,6 +71,14 @@ html{
 .nav-pills li{
     margin: 8px 0;
 }
+
+.dropdown-menu-session{
+    right: 0; 
+    left: auto; 
+    position: absolute;
+    margin-top: 13px;
+}   
+
 .flex-container{
     height: 80vh;
     display: flex;
