@@ -3,8 +3,9 @@ p{
 }
 .fondoParcheado{
     background: var(--Alabaster);
-    padding-top: 55px !important;
+    padding-top: 75px !important;
 }
+
 .main-container{
     height: 100%;
     width: auto;
@@ -129,6 +130,7 @@ p{
             var(--Alabaster) 50%,
             var(--Alabaster) 100%
         );
+        padding-top: 55px;
     }
     div.main-container{
         width: 100vw;
@@ -144,9 +146,11 @@ p{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
     }
     .container-find{
         width: 355px;
+        margin-top: 0px;
     }
     .secondary-container{
         width: 55vw;

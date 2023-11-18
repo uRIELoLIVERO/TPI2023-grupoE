@@ -74,9 +74,9 @@ html{
 
 .dropdown-menu-session{
     right: 0; 
-    left: auto; 
+    left: auto !important;
     position: absolute;
-    margin-top: 13px;
+    margin-top: 13px !important; 
 }   
 
 .flex-container{

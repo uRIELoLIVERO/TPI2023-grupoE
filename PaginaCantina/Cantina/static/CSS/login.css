@@ -21,11 +21,6 @@ body::before {
     z-index: -1;
 }
 
-
-main{
-    max-width: 330px;
-}
-
 :root {
     --hunyadiYellow: #EDAE49;
     --onyx: #313638;
@@ -50,6 +45,7 @@ main{
 #id_username, #id_password{
     border: none;
     outline: none;
+    width: 100% !important;
 }
 
 .navbarColor{
@@ -68,6 +64,9 @@ main{
 .fondoGris{
     background-color: rgba(232, 233, 235, 0.90);
     border-radius: 7px;
+    width: inherit;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .tituloCantina{
@@ -88,7 +87,7 @@ main{
 }
 
 .botonIngresar{
-    background-color: var(--lapisLazulli);
+    background-color: var(--lapisLazulli) !important;
     border-radius: 8px;
 }
 
