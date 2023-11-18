@@ -2,19 +2,14 @@
 
 # Trabajo Práctico Integrador - Análisis de Sistemas de Información
 
-**Docentes:**
-
-- Ing. Simieli, Paola.
-- Ing. Quiroga Ortiz, Valeria.
-- Ing. Achetta, Laura.
-
 **Alumnos:**
 
-- Fermani, Julián 15172.
-- Anil, Facundo 14956.
-- Lelli, Matias 14985.
-- Massietti, Alexander 14949.
-- Olivero, Uriel 15043.
+- Fermani, Julián.
+- Anil, Facundo.
+- Lelli, Matias.
+- Massietti, Alexander.
+- Olivero, Uriel.
+- Doglio, Ramiro.
 
 ## Introducción
 
@@ -33,12 +28,63 @@ Los objetivos principales de este proyecto son los siguientes:
 
 Este repositorio está organizado de la siguiente manera:
 
-- 📁 `BPMN`: Aquí se encuentran los modelos de datos y cualquier otra documentación relacionada con el diseño del sistema.
+- 📁 `Modelados`: Aquí se encuentran los modelados y cualquier otra documentación relacionada con el diseño del sistema (BPMN, Caso de Uso, Plantillas y diagrama de clases).
 - 📁 `HTML, CSS, JS`: Contiene el código fuente de la aplicación desarrollada para la cantina.
+- 📁 `PaginaCantina`: Es el contenedor de el entorno donde se hostea la pagina web, aqui mismo podemos encontrar todas las vistas y la logica de las mismas.
 
 ## Tecnologías Utilizadas
 
 Para la implementación del sistema, hemos utilizado las siguientes tecnologías:
 
 - 📱 Interfaz de usuario: HTML, CSS, JavaScript.
+- 💻 Funcionalidad del servidor: Django, Ajax, Python, MySQLite.
 - 📦 Control de versiones: Git y GitHub.
+- ✅ Gestion de tares de trabajo: Trello
+
+* * *
+ >[!NOTE]
+ >
+ >Como hostear el servidor de forma local:
+ >Configuración inicial:
+
+### 1. Clonar el repositorio
+
+    git clone <URL_del_repositorio>
+
+### 2. Crear un entorno virtual
+
+    python -m venv nombre_del_entorno
+
+En Windows: nombre_del_entorno\Scripts\activate.
+
+En macOS/Linux: source nombre_del_entorno/bin/activate.
+
+### 3.Instalar Django y otras dependencias
+
+    pip install django
+    pip install -r requirements.txta
+
+>[!IMPORTANT]
+>
+>Configuración de Django y ejecución del servidor:
+
+### 1. Configurar el proyecto
+Configura la base de datos en settings.py.
+
+Crea un archivo .env para variables de entorno si es necesario.
+
+### 2. Aplicar migraciones
+
+    python manage.py makemigrations
+    python manage.py migrate
+
+### 3. Crear un superusuario (no es necesario)
+
+    python manage.py createsuperuser
+La base de datos cuenta con un usuario admin y contraseña admin
+
+### 4. Ejecutar el servidor
+
+    python manage.py runserver
+
+Visita http://127.0.0.1:8000/ o http://localhost:8000/ en tu navegador.
