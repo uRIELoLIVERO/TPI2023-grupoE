@@ -2,7 +2,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from .views import *
 from . import views
-
+from . import views as cantina_views
 urlpatterns = [
     path('a', mysite),
     path('', login_view, name='login'),
@@ -27,11 +27,15 @@ urlpatterns = [
     # Other views
     path('verCtaCte/', views.verCtaCte, name='verCtaCte'),
     path('resetPassword2/', views.resetPassword2, name='resetPassword2'),
-    path('consultarProductos/', views.consultarPedido, name='consultarPedido'),
+    path('consultarPedidos/', views.consultarPedido, name='consultarPedido'),
     path('revisionPedido/', views.revisionPedido, name='revisionPedido'),
     path('detallePagoFinal/', views.detallePagoFinal, name='detallePagoFinal'),
     path('guardar_datos/', guardar_datos, name='guardar_datos'),
     path('obtener_areas/', obtener_areas, name='obtener_areas'),
     path('detalle_pedido/', detalle_pedido, name='detalle_pedido'),
     path('calcular_total/', calcular_total, name='calcular_total'),
+
+    path('pedidos/', cantina_views.lista_pedidos, name='lista_pedidos'),
+    path('pedidos/<int:pedido_id>/', cantina_views.detalles_pedido, name='detalles_pedido'),
+    path('obtener_pedidos/', cantina_views.obtener_pedidos, name='obtener_pedidos'),
 ]

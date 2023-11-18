@@ -23,7 +23,7 @@
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #edae49; padding: 0 16px">
-      <a class="navbar-brand me-auto" href="/productos">
+      <a class="navbar-brand me-auto" href="{% url 'consultarProductos' %}">
           <img src="{% static 'images/logo-negro-utn-navbar.png' %}" alt="Logo" style="max-width: 250px; height: auto;">
       </a>
       <button id="burgerMenu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +84,7 @@
                 </li>
                 <li class="nav-item">
                   <div class="d-inline-flex">
-                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-cart-aside.png' %} " alt="" height="30px"></span><a href="{% url 'miCarrito' %}" class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi carrito</a>
+                    <span class="me-2 align-middle d-flex align-items-center"><img src=" {% static 'images/shopping-cart-aside.png' %} " alt="" height="30px"></span><a href="{% url 'productosCarrito' %}" class="h5 mt-0 mb-0 titulos-principal fecha-request">Mi carrito</a>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -109,7 +109,8 @@
           
       </div>
     </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>    <script src='{% static "js/main.js" %}' defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
     <script src="{% static 'js/deshabilitarBoton.js' %}" defer></script>
     {% block content %}
     {% endblock %}

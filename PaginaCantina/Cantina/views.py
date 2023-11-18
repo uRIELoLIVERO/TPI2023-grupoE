@@ -10,6 +10,8 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 def mysite(request):
     # Lógica de negocio aquí
@@ -182,14 +184,62 @@ def calcular_total(request):
 def detalle_pedido(request):
     return render(request, 'detalleDeEntregaYPago.html')
 
+def detalles_pedido(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id)
+    detalles_pedido = DetallePedido.objects.filter(pedido=pedido)  # Obtener detalles asociados a este pedido
+    return render(request, 'detalles_pedido.html', {'pedido': pedido, 'detalles_pedido': detalles_pedido})
+
+
+
+@login_required
+def consultarPedido(request):
+    productos_seleccionados = Producto.objects.filter(carrito=1)
+    if request.user.is_authenticated:
+        cliente_id = request.user.id  # Obtener el ID del usuario autenticado
+
+        nuevo_pedido = Pedido.objects.create(cliente_id=cliente_id)  # Usar el ID del cliente obtenido
+
+        total_pedido = 0  # Inicializamos el total del pedido
+
+        for producto in productos_seleccionados:
+            detalle_pedido = DetallePedido.objects.create(
+                producto=producto,
+                cantidad=producto.cantidad,
+                subtotal=producto.subtotal
+            )
+            nuevo_pedido.detalles.add(detalle_pedido)
+            total_pedido += producto.subtotal
+
+        nuevo_pedido.total = total_pedido
+        nuevo_pedido.save()
+
+        productos_seleccionados.update(carrito=0)
+
+        return render(request, 'consultarPedido.html', {'nuevo_pedido': nuevo_pedido})
+
+@login_required
+def lista_pedidos(request):
+    # Obtener los pedidos del usuario autenticado
+    pedidos_usuario = Pedido.objects.filter(cliente=request.user)
+    
+    # Pasar los pedidos al contexto
+    context = {
+        'pedidos_usuario': pedidos_usuario
+    }
+
+    return render(request, 'lista_pedidos.html', context)
+
+def obtener_pedidos(request):
+    # Lógica para obtener los pedidos
+    return render(request, 'obtener_pedidos.html', context)
+
+
 def verCtaCte(request):
     return render(request, 'verCtaCte.html')
 
 def resetPassword2(request):
     return render(request, 'resetPassword2.html')
 
-def consultarPedido(request):
-    return render(request, 'consultarPedido.html')
 
 def revisionPedido(request):
     return render(request, 'revisionPedido.html')

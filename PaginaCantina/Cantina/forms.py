@@ -56,6 +56,7 @@ class ProductoForm(forms.ModelForm):
         }
 
 
+
 class DetallePedidoForm(forms.ModelForm):
     class Meta:
         model = DetallePedido
@@ -65,15 +66,18 @@ class DetallePedidoForm(forms.ModelForm):
             'cantidad': NumberInput(attrs={'class': 'form-control'}),
         }
 
-class PedidoForm(forms.ModelForm):
-    class Meta:
-        model = Pedido
-        fields = ['cliente', 'detalles']
 
-    detalles = forms.MultipleChoiceField(
-        choices=[(detalle.id, str(detalle)) for detalle in DetallePedido.objects.all()],
+
+class PedidoForm(forms.ModelForm):
+    detalles = forms.ModelMultipleChoiceField(
+        queryset=DetallePedido.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+
+    class Meta:
+        model = Pedido
+        fields = ['detalles']
+
 
 class AdminProfileForm(forms.ModelForm):
     class Meta:
