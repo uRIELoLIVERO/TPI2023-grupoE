@@ -9,6 +9,7 @@ from django.views import View
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 def mysite(request):
     # Lógica de negocio aquí
@@ -164,6 +165,22 @@ def guardar_datos(request):
         # Manejar el caso donde la solicitud no es POST
         pass
 
+
+def obtener_areas(request):
+    areas = Area.objects.all()
+    areas_nombres = [area.nombre for area in areas]
+    return JsonResponse({'areas': areas_nombres})
+
+def calcular_total(request):
+    try:
+        productos = Producto.objects.all()
+        total = sum(producto.subtotal for producto in productos)
+        return JsonResponse({'total': total})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+def detalle_pedido(request):
+    return render(request, 'detalleDeEntregaYPago.html')
 
 def verCtaCte(request):
     return render(request, 'verCtaCte.html')

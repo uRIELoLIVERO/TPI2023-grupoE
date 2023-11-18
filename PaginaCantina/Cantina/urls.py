@@ -28,5 +28,9 @@ urlpatterns = [
     path('detallePagoFinal/', views.detallePagoFinal, name='detallePagoFinal'),
     
     path('guardar_datos/', guardar_datos, name='guardar_datos'),
+    path('obtener_areas/', obtener_areas, name='obtener_areas'),
+    path('detalle_pedido/', detalle_pedido, name='detalle_pedido'),
+    
+    path('calcular_total/', calcular_total, name='calcular_total'),
 ]
 
