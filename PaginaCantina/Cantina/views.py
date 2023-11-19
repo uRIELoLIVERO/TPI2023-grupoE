@@ -175,7 +175,7 @@ def obtener_areas(request):
 
 def calcular_total(request):
     try:
-        productos = Producto.objects.all()
+        productos = Producto.objects.filter(carrito=1)
         total = sum(producto.subtotal for producto in productos)
         return JsonResponse({'total': total})
     except Exception as e:
