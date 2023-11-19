@@ -62,7 +62,7 @@ En macOS/Linux: source nombre_del_entorno/bin/activate.
 ### 3.Instalar Django y otras dependencias
 
     pip install django
-    pip install -r requirements.txta
+    pip install -r requirements.txt
 
 >[!IMPORTANT]
 >
