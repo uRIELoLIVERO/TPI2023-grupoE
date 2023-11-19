@@ -69,6 +69,7 @@ p{
 }
 .title span{
     font-size: var(--sm);
+    margin: auto 0px;
 }
 
 .cards-container{
@@ -130,7 +131,7 @@ p{
             var(--Alabaster) 50%,
             var(--Alabaster) 100%
         );
-        padding-top: 55px;
+        padding-top: 55px !important;
     }
     div.main-container{
         width: 100vw;

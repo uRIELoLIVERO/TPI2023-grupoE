@@ -22,8 +22,8 @@
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #edae49; padding: 0 16px">
       <a class="navbar-brand me-auto" href="{% url 'consultarProductos' %}">
-          <img src="{% static 'images/logo-negro-utn-navbar.png' %}" alt="Logo" style="max-width: 250px; height: auto;">
-      </a>
+        <img id="logoImage" src="{% static 'images/logo-horizontal-negro-utn-navbar.png' %}" alt="Logo" style="max-width: 250px; height: 50px;">
+      </a>    
       <button id="burgerMenu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span id="burgerMenu"><img src="{% static "images/menu-burger.png" %}" height="25px"></span>
       </button>
@@ -116,6 +116,23 @@
     <script src="{% static 'js/quitarProductoCarrito.js' %} " defer></script>
     <script src="{% static 'js/totalCarrito.js' %} " defer></script>
     <script src="{% static 'js/subtotalDefault.js' %} " defer></script>
+    <script>
+      // Obtener la referencia a la imagen
+      var logoImage = document.getElementById('logoImage');
+  
+      // Función para cambiar la fuente de la imagen según el ancho de la ventana
+      function cambiarFuenteDeLogo() {
+          if (window.innerWidth <= 1024) {
+              logoImage.src = "{% static 'images/logo_horizontal_negro_utn.png' %}";
+          } else {
+              logoImage.src = "{% static 'images/logo-negro-utn-navbar.png' %}";
+          }
+      }
+  
+      // Llamar a la función al cargar la página y al cambiar el tamaño de la ventana
+      cambiarFuenteDeLogo();
+      window.addEventListener('resize', cambiarFuenteDeLogo);
+    </script>
     {% block content %}
     {% endblock %}
   </body>

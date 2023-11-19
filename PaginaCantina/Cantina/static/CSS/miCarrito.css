@@ -37,6 +37,10 @@ hr{
     font-weight: 600;
 }
 
+.subtotal{
+    margin-right: 12px !important;
+}
+
 .cantidad{
     background-color: var(--Alabaster);
     width: 18px;
@@ -85,6 +89,10 @@ hr{
 
     .total-a-pagar{
         margin-top: 0px !important;
+    }
+
+    .subtotal{
+        margin-right: 0px !important;
     }
 
     hr{
