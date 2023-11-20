@@ -91,6 +91,7 @@ def consultarProductos(request):
             elif tipo_orden == 'mayor-menor':
                 productos_disponibles = productos_disponibles.order_by('-precioUnitario')
 
+    
     if request.method == 'POST':
         detalle_form = DetallePedidoForm(request.POST)
         if detalle_form.is_valid():
@@ -108,6 +109,28 @@ def consultarProductos(request):
         'form': TuFormularioDeFiltro(),
         'detalle_form': DetallePedidoForm(),
     }
+    
+    cliente_id = request.user.id  # Obtener el ID del usuario autenticado
+
+    nuevo_pedido = Pedido.objects.create(cliente_id=cliente_id)  # Usar el ID del cliente obtenido
+
+    total_pedido = 0
+    
+    for producto in productos_disponibles:
+            detalle_pedido = DetallePedido.objects.create(
+                producto=producto,
+                cantidad=producto.cantidad,
+                subtotal=producto.subtotal
+            )
+            nuevo_pedido.detalles.add(detalle_pedido)
+            total_pedido += producto.subtotal
+
+    nuevo_pedido.total = total_pedido
+    nuevo_pedido.save()
+
+    productos_disponibles.update(carrito=0, cantidad=1)
+        
+    
     return render(request, 'consultarProductos.html', context)
 
 
@@ -181,6 +204,7 @@ def calcular_total(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
+
 def detalle_pedido(request):
     return render(request, 'detalleDeEntregaYPago.html')
 
@@ -213,7 +237,6 @@ def consultarPedido(request):
         nuevo_pedido.total = total_pedido
         nuevo_pedido.save()
 
-        productos_seleccionados.update(carrito=0)
 
         return render(request, 'consultarPedido.html', {'nuevo_pedido': nuevo_pedido})
 

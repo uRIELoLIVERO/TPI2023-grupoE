@@ -48,7 +48,7 @@
                         <hr>
                             <div class="request-subtotal">
                             <p class="request-total">Total</p>
-                            <p class="request-total">$656.59</p>
+                            <p class="request-total" id="totalPlaceholder"></p>
                            </div>
                         </div>
                         <div class="d-grid mx-auto d-flex justify-content-center">
@@ -61,4 +61,25 @@
             {% endif %}
           </div>
     </section>
+    <script>
+        $(document).ready(function() {
+            // Hacer una solicitud al servidor para obtener el total
+            $.ajax({
+                url: '/calcular_total/', // Reemplaza con la URL correcta de tu aplicación
+                type: 'GET',
+                success: function(data) {
+                    // Verifica si se recibió un total válido
+                    if ('total' in data) {
+                        // Actualizar el contenido del totalPlaceholder con el nuevo total
+                        $('#totalPlaceholder').text(data.total);
+                    } else {
+                        console.log('Respuesta inesperada del servidor:', data);
+                    }
+                },
+                error: function(error) {
+                    console.log('Error al obtener el total:', error);
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -41,9 +41,6 @@ class Producto(models.Model):
         carrito = self.detallepedido_set.filter(pedido__estado='pendiente')
         total = sum(item.subtotal for item in carrito)
         return total
-
-
-
 class DetallePedido(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()

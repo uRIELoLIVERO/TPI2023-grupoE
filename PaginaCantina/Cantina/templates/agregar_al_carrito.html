@@ -10,11 +10,12 @@
                         <span class="me-2 align-middle d-flex align-items-center"><a href="{% url 'consultarProductos' %}"><img class="" src="{% static 'images/return 1.svg' %}" alt="" height="18px"></a></span><p class="h5 mt-0 mb-0 titulos-principal">Mi carrito</p>
                     </div>
                     <div class="col text-end">
-                        <p class="h5 m-0 titulos-principal">{{ productos_en_carrito.total_items }}</p>
+                        <p class="h5 m-0 titulos-principal">{{ productos_en_carrito.total_items }} items</p>
                     </div>
                 </div>
                 <hr class="border-black m-1 mb-3">
             </div>
+
             {% for producto in productos_en_carrito %}
             <div class="card">
               <div class="row fila-objeto" data-product-id="{{ producto.id }}">
@@ -71,4 +72,64 @@
           </main>
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script src="{% static 'js/subtotalCarrito.js' %} " defer></script>
+      <script src="{% static 'js/quitarProductoCarrito.js' %} " defer></script>
+      <script src="{% static 'js/totalCarrito.js' %} " defer></script>
+      <script src="{% static 'js/subtotalDefault.js' %} " defer></script>
+      <script>
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                  var cookie = cookies[i].trim();
+                  // Busca el nombre del token CSRF
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+  
+      document.getElementById('btnIrAPagar').addEventListener('click', function () {
+        var productos = [];
+    
+        // Itera sobre cada fila de producto y recopila los datos
+        $('.fila-objeto').each(function () {
+            var productId = $(this).data('product-id');
+            var cantidad = parseInt($(this).find('.cantidad').text());
+            var subtotal = parseFloat($(this).find('.subtotal').text().replace('$', ''));
+    
+            // Agrega los datos al array de productos
+            productos.push({
+                id: productId,
+                cantidad: cantidad,
+                subtotal: subtotal
+            });
+        });
+    
+        // Obtiene el token CSRF
+        var csrftoken = getCookie('csrftoken');
+    
+        // Realiza una solicitud AJAX para enviar los datos al servidor con el token CSRF
+        $.ajax({
+            type: 'POST',
+            url: '/guardar_datos/',
+            data: {
+                csrfmiddlewaretoken: csrftoken,
+                productos: JSON.stringify(productos)
+            },
+            success: function (data) {
+                console.log('Datos guardados con éxito');
+            },
+            error: function (error) {
+                console.error('Error al intentar guardar los datos:', error);
+            }
+        });
+    });
+    
+      </script>
 {% endblock %}
