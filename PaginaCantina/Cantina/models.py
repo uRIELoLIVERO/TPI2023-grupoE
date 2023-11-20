@@ -24,7 +24,7 @@ class Producto(models.Model):
     imagen = models.ImageField()
     estado = models.BooleanField()
     carrito = models.IntegerField(default=0)
-    cantidad = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(stock)])
+    cantidad = models.IntegerField(validators=[MinValueValidator(1)])
     subtotal = models.DecimalField(max_digits=10, decimal_places=2)
     total = models.DecimalField(max_digits=10, decimal_places=2)
     
