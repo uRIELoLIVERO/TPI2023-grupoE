@@ -24,6 +24,13 @@ Los objetivos principales de este proyecto son los siguientes:
 3. Desarrollar una aplicación de software que implemente el modelo de datos y brinde a los usuarios la capacidad de realizar pedidos, consultar menús y administrar su cuenta.
 4. Aplicar y la relacionar los contenidos desarrollados a lo largo del programa de la cátedra e integrar los conocimientos adquiridos en las materias verticales y horizontales.
 
+## Previsualizacion
+##### Laptop
+https://github.com/uRIELoLIVERO/TPI2023-grupoE/assets/134315672/faf77dce-3410-4080-872f-9309e105ca48
+
+##### Mobile
+https://github.com/uRIELoLIVERO/TPI2023-grupoE/assets/134315672/70b6cfde-ef42-4f6a-b9f6-6a7c905f72bc
+
 ## Estructura del Repositorio
 
 Este repositorio está organizado de la siguiente manera:
